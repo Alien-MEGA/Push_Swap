@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 17:20:20 by reben-ha          #+#    #+#             */
-/*   Updated: 2022/12/28 15:00:45 by reben-ha         ###   ########.fr       */
+/*   Updated: 2022/12/28 17:56:21 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@ void	p_ab(t_list **head_of_a, t_list **head_of_b, int option)
 {
 	t_list	*tmp_node;
 
+	if ((!head_of_a || !(*head_of_a))
+		|| !(head_of_b || !(*head_of_b)))
+		return ;
 	if (option == 'a')
 	{
 		ft_lstadd_front(head_of_a, ft_lstnew((*head_of_b)->data));
@@ -38,10 +41,14 @@ void	ss_ab(t_list *head_of_a, t_list *head_of_b, int option)
 {
 	int	tmp;
 
+	if (((!head_of_a) || (!head_of_b)) && option == 'X')
+		return ;
 	if (option == 'a' || option == 'b' || option == 'X')
 	{
 		if (option == 'a' || option == 'X')
 		{
+			if ((!head_of_a) && option == 'a')
+				return ;
 			tmp = head_of_a->data;
 			head_of_a->data = head_of_a->next->data;
 			head_of_a->next->data = tmp;
@@ -50,6 +57,8 @@ void	ss_ab(t_list *head_of_a, t_list *head_of_b, int option)
 		}
 		if (option == 'b' || option == 'X')
 		{
+			if ((!head_of_b) && option == 'b')
+				return ;
 			tmp = head_of_b->data;
 			head_of_b->data = head_of_b->next->data;
 			head_of_b->next->data = tmp;
@@ -61,7 +70,7 @@ void	ss_ab(t_list *head_of_a, t_list *head_of_b, int option)
 	}
 }
 
-void	rr_ab(t_list *head_of_a, t_list *head_of_b, int option)
+void	rr_ab(t_list **head_of_a, t_list **head_of_b, int option)
 {
 	t_list	*tmp_node;
 
@@ -69,19 +78,19 @@ void	rr_ab(t_list *head_of_a, t_list *head_of_b, int option)
 	{
 		if (option == 'a' || option == 'X')
 		{
-			tmp_node = head_of_a;
-			head_of_a = head_of_a->next;
+			tmp_node = (*head_of_a);
+			(*head_of_a) = (*head_of_a)->next;
 			tmp_node->next = NULL;
-			ft_lstadd_back(&head_of_a, tmp_node);
+			ft_lstadd_back(head_of_a, tmp_node);
 			if (option == 'a')
 				write(1, "ra\n", 3);
 		}
 		if (option == 'b' || option == 'X')
 		{
-			tmp_node = head_of_b;
-			head_of_b = head_of_b->next;
+			tmp_node = (*head_of_b);
+			(*head_of_b) = (*head_of_b)->next;
 			tmp_node->next = NULL;
-			ft_lstadd_back(&head_of_b, tmp_node);
+			ft_lstadd_back(head_of_b, tmp_node);
 			if (option == 'b')
 				write(1, "rb\n", 3);
 		}
@@ -89,6 +98,35 @@ void	rr_ab(t_list *head_of_a, t_list *head_of_b, int option)
 			write(1, "rr\n", 3);
 	}
 }
+
+// void	rr_ab(t_list *head_of_a, t_list *head_of_b, int option)
+// {
+// 	t_list	*tmp_node;
+
+// 	if (option == 'a' || option == 'b' || option == 'X')
+// 	{
+// 		if (option == 'a' || option == 'X')
+// 		{
+// 			tmp_node = head_of_a;
+// 			head_of_a = head_of_a->next;
+// 			tmp_node->next = NULL;
+// 			ft_lstadd_back(&head_of_a, tmp_node);
+// 			if (option == 'a')
+// 				write(1, "ra\n", 3);
+// 		}
+// 		if (option == 'b' || option == 'X')
+// 		{
+// 			tmp_node = head_of_b;
+// 			head_of_b = head_of_b->next;
+// 			tmp_node->next = NULL;
+// 			ft_lstadd_back(&head_of_b, tmp_node);
+// 			if (option == 'b')
+// 				write(1, "rb\n", 3);
+// 		}
+// 		if (option == 'X')
+// 			write(1, "rr\n", 3);
+// 	}
+// }
 
 void	rrr_ab(t_list *head_of_a, t_list *head_of_b, int option)
 {
@@ -128,3 +166,9 @@ void	rrr_ab(t_list *head_of_a, t_list *head_of_b, int option)
 			write(1, "rrr\n", 4);
 	}
 }
+
+
+	// last_node = ft_lstlast(head);
+	// last_node->next = head;
+	// head->next = NULL;
+	

@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2022/12/28 15:01:24 by reben-ha         ###   ########.fr       */
+/*   Updated: 2022/12/28 17:58:29 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,6 @@ int	main(int argc, char *argv[])
 	t_list	*head_of_a;
 	t_list	*tmp_node;
 	t_list	*head_of_b;
-	t_list	*tmp_node_a;
-	t_list	*tmp_node_b;
 	int		i;
 
 	if (argc <= 1)
@@ -53,9 +51,11 @@ int	main(int argc, char *argv[])
 	}
 
 	//Test for linked list
+	printf("\n\n\n\nStart :\n\n");
+	head_of_b = NULL;
 	tmp_node = head_of_a;
 	ft_print_lst(head_of_a, 'A');
-	ft_print_lst(head_of_a, 'B');
+	ft_print_lst(head_of_b, 'B');
 	printf("\n\n1 = New :\n\n");
 
 	// p_ab(&head_of_a, &head_of_b, 'a');
@@ -74,10 +74,34 @@ int	main(int argc, char *argv[])
 	p_ab(&head_of_a, &head_of_b, 'b');
 	p_ab(&head_of_a, &head_of_b, 'b');
 	p_ab(&head_of_a, &head_of_b, 'b');
-	p_ab(&head_of_a, &head_of_b, 'b');
-	p_ab(&head_of_a, &head_of_b, 'b');
-	p_ab(&head_of_a, &head_of_b, 'b');
-	p_ab(&head_of_a, &head_of_b, 'b');
+	// p_ab(&head_of_a, &head_of_b, 'b');
+	// p_ab(&head_of_a, &head_of_b, 'b');
+	// p_ab(&head_of_a, &head_of_b, 'b');
+	// p_ab(&head_of_a, &head_of_b, 'b');
+	// p_ab(&head_of_a, &head_of_b, 'b');
+	// p_ab(&head_of_a, &head_of_b, 'b');
+	// p_ab(&head_of_a, &head_of_b, 'b');
+	// p_ab(&head_of_a, &head_of_b, 'b');
+
+	// p_ab(&head_of_a, &head_of_b, 'a');
+	// p_ab(&head_of_a, &head_of_b, 'a');
+	// p_ab(&head_of_a, &head_of_b, 'a');
+	// p_ab(&head_of_a, &head_of_b, 'a');
+	// p_ab(&head_of_a, &head_of_b, 'a');
+	// p_ab(&head_of_a, &head_of_b, 'a');
+	// p_ab(&head_of_a, &head_of_b, 'a');
+	// p_ab(&head_of_a, &head_of_b, 'a');
+	// p_ab(&head_of_a, &head_of_b, 'a');
+	// p_ab(&head_of_a, &head_of_b, 'a');
+
+	// ss_ab(head_of_a, head_of_b, 'X');
+	// ss_ab(head_of_a, head_of_b, 'X');
+
+	rr_ab(&head_of_a, &head_of_b, 'a');
+
+	
+
+
 	
 	ft_print_lst(head_of_a, 'A');
 
@@ -85,21 +109,16 @@ int	main(int argc, char *argv[])
 	
 	//End
 }
+// 55
+// 66
+// 77
+// 88
+// -
+// A
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// 44
+// 33
+// 22
+// 11
+// -
+// B

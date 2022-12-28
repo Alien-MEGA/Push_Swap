@@ -6,7 +6,7 @@
 #    By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/22 16:23:50 by reben-ha          #+#    #+#              #
-#    Updated: 2022/12/28 14:59:21 by reben-ha         ###   ########.fr        #
+#    Updated: 2022/12/28 16:42:44 by reben-ha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,6 @@ test :
 	make
 	make clean
 	gcc push_swap.a -o push_swap
-	rm -
-	./push_swap 11 22 33 44 55 66 77 88 99
+	rm -f push_swap.a
+	./push_swap 11 22 33 44 55 66 77 88
 .PHONY = all bonus clean fclean re test
