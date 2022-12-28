@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:42 by reben-ha          #+#    #+#             */
-/*   Updated: 2022/12/28 17:56:35 by reben-ha         ###   ########.fr       */
+/*   Updated: 2022/12/28 18:33:34 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,6 @@ int		ft_lstsize(t_list *lst);
 void	p_ab(t_list **head_of_a, t_list **head_of_b, int option);
 void	ss_ab(t_list *head_of_a, t_list *head_of_b, int option);
 void	rr_ab(t_list **head_of_a, t_list **head_of_b, int option);
-void	rrr_ab(t_list *head_of_a, t_list *head_of_b, int option);
+void	rrr_ab(t_list **head_of_a, t_list **head_of_b, int option);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 17:20:20 by reben-ha          #+#    #+#             */
-/*   Updated: 2022/12/28 17:56:21 by reben-ha         ###   ########.fr       */
+/*   Updated: 2022/12/28 22:54:26 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,66 +99,46 @@ void	rr_ab(t_list **head_of_a, t_list **head_of_b, int option)
 	}
 }
 
-// void	rr_ab(t_list *head_of_a, t_list *head_of_b, int option)
-// {
-// 	t_list	*tmp_node;
-
-// 	if (option == 'a' || option == 'b' || option == 'X')
-// 	{
-// 		if (option == 'a' || option == 'X')
-// 		{
-// 			tmp_node = head_of_a;
-// 			head_of_a = head_of_a->next;
-// 			tmp_node->next = NULL;
-// 			ft_lstadd_back(&head_of_a, tmp_node);
-// 			if (option == 'a')
-// 				write(1, "ra\n", 3);
-// 		}
-// 		if (option == 'b' || option == 'X')
-// 		{
-// 			tmp_node = head_of_b;
-// 			head_of_b = head_of_b->next;
-// 			tmp_node->next = NULL;
-// 			ft_lstadd_back(&head_of_b, tmp_node);
-// 			if (option == 'b')
-// 				write(1, "rb\n", 3);
-// 		}
-// 		if (option == 'X')
-// 			write(1, "rr\n", 3);
-// 	}
-// }
-
-void	rrr_ab(t_list *head_of_a, t_list *head_of_b, int option)
+void	rrr_ab(t_list **head_of_a, t_list **head_of_b, int option)
 {
-	t_list	*tmp_node;
-	int		i;
+	t_list	*tmp_a;
+	t_list	*last_a;
+	t_list	*tmp_b;
+	t_list	*last_b;
 
-	i = 0;
 	if (option == 'a' || option == 'b' || option == 'X')
 	{
 		if (option == 'a' || option == 'X')
 		{
-			tmp_node = head_of_a;
-			while (i < (ft_lstsize(tmp_node) - 1))
+			if (*head_of_a == NULL)
+				return;
+			tmp_a = *head_of_a; // save tmp for first node
+			last_a = NULL;
+			while (tmp_a->next)
 			{
-				tmp_node = tmp_node->next;
-				i++;
+				last_a = tmp_a; // save node before last node
+				tmp_a = tmp_a->next; // last node
 			}
-			ft_lstadd_front(&head_of_a, ft_lstlast(head_of_a));
-			tmp_node->next = NULL;
+			last_a->next = NULL; // Unlink node
+			tmp_a->next = *head_of_a;
+			*head_of_a = tmp_a;
 			if (option == 'a')
 				write(1, "rra\n", 4);
 		}
 		if (option == 'b' || option == 'X')
 		{
-			tmp_node = head_of_b;
-			while (i < (ft_lstsize(tmp_node) - 1))
+			if (*head_of_b == NULL)
+				return;
+			tmp_b = *head_of_b;
+			last_b = NULL;
+			while (tmp_b->next)
 			{
-				tmp_node = tmp_node->next;
-				i++;
+				last_b = tmp_b;
+				tmp_b = tmp_b->next;
 			}
-			ft_lstadd_front(&head_of_b, ft_lstlast(head_of_b));
-			tmp_node->next = NULL;
+			last_b->next = NULL;
+			tmp_b->next = *head_of_b;
+			*head_of_b = tmp_b;
 			if (option == 'b')
 				write(1, "rrb\n", 4);
 		}
@@ -166,9 +146,3 @@ void	rrr_ab(t_list *head_of_a, t_list *head_of_b, int option)
 			write(1, "rrr\n", 4);
 	}
 }
-
-
-	// last_node = ft_lstlast(head);
-	// last_node->next = head;
-	// head->next = NULL;
-	

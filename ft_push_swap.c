@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2022/12/28 17:58:29 by reben-ha         ###   ########.fr       */
+/*   Updated: 2022/12/28 20:43:14 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,28 +97,31 @@ int	main(int argc, char *argv[])
 	// ss_ab(head_of_a, head_of_b, 'X');
 	// ss_ab(head_of_a, head_of_b, 'X');
 
-	rr_ab(&head_of_a, &head_of_b, 'a');
-
+	// rr_ab(&head_of_a, &head_of_b, 'b');
+	// rr_ab(&head_of_a, &head_of_b, 'b');
+	// rr_ab(&head_of_a, &head_of_b, 'b');
+	// rr_ab(&head_of_a, &head_of_b, 'b');
 	
+	// rrr_ab(&head_of_a, &head_of_b, 'b');
+	// rr_ab(&head_of_a, &head_of_b, 'a');
+	rrr_ab(&head_of_a, &head_of_b, 'X');
 
-
-	
 	ft_print_lst(head_of_a, 'A');
 
 	ft_print_lst(head_of_b, 'B');
 	
 	//End
 }
-// 55
-// 66
-// 77
-// 88
+// 44
+// 11
+// 22
+// 33
 // -
 // A
 
 // 44
-// 33
-// 22
 // 11
+// 22
+// 33
 // -
 // B

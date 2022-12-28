@@ -6,7 +6,7 @@
 #    By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/22 16:23:50 by reben-ha          #+#    #+#              #
-#    Updated: 2022/12/28 16:42:44 by reben-ha         ###   ########.fr        #
+#    Updated: 2022/12/28 18:14:08 by reben-ha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,10 +31,10 @@ fclean : clean
 	rm -f $(NAME)
 re : fclean all
 
-test :
+run :
 	make
 	make clean
 	gcc push_swap.a -o push_swap
 	rm -f push_swap.a
-	./push_swap 11 22 33 44 55 66 77 88
-.PHONY = all bonus clean fclean re test
+	./push_swap 44 33 22 11 11 22 33 44
+.PHONY = all bonus clean fclean re run
