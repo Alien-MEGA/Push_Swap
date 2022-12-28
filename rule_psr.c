@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 17:20:20 by reben-ha          #+#    #+#             */
-/*   Updated: 2022/12/27 22:55:14 by reben-ha         ###   ########.fr       */
+/*   Updated: 2022/12/28 15:00:45 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,10 @@ void	p_ab(t_list **head_of_a, t_list **head_of_b, int option)
 
 	if (option == 'a')
 	{
-		ft_lstadd_front(head_of_a, (*head_of_b));
+		ft_lstadd_front(head_of_a, ft_lstnew((*head_of_b)->data));
+		tmp_node = (*head_of_b);
 		(*head_of_b) = (*head_of_b)->next;
-		(*head_of_a)->next = NULL;
+		free(tmp_node);
 		write(1, "pa\n", 3);
 	}
 	if (option == 'b')
@@ -32,14 +33,7 @@ void	p_ab(t_list **head_of_a, t_list **head_of_b, int option)
 		write(1, "pb\n", 3);
 	}
 }
-	// if (option == 'b')
-	// {
-	// 	ft_lstadd_front(head_of_b, (*head_of_a));
-	// 	(*head_of_a) = (*head_of_a)->next;
-	// 	(*head_of_b)->next = NULL;
-	// 	write(1, "pb\n", 3);
-	// }
-//Take the data and make new node and link with addfront
+
 void	ss_ab(t_list *head_of_a, t_list *head_of_b, int option)
 {
 	int	tmp;

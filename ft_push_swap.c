@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2022/12/28 11:59:22 by reben-ha         ###   ########.fr       */
+/*   Updated: 2022/12/28 15:01:24 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void ft_print_lst(t_list *head, int option)
 {	
-	while (head != NULL) // Print list b
+	while (head != NULL)
 	{
 		printf("\n%d", head->data);
 		head = head->next;
@@ -51,33 +51,36 @@ int	main(int argc, char *argv[])
 		ft_lstadd_back(&head_of_a, (ft_lstnew(ft_atoi(argv[i]))));
 		i++;
 	}
+
 	//Test for linked list
 	tmp_node = head_of_a;
 	ft_print_lst(head_of_a, 'A');
-	
+	ft_print_lst(head_of_a, 'B');
+	printf("\n\n1 = New :\n\n");
 
-	// Test OK : rrr_ab(tmp_node, NULL, 'a'); 
-	// Test OK : rr_ab(tmp_node, NULL, 'a');
-	// Test OK : ss_ab(tmp_node, NULL, 'a');
-	// printf("\n\n1 = New :");
+	// p_ab(&head_of_a, &head_of_b, 'a');
+	// p_ab(&head_of_a, &head_of_b, 'b');
 
-	// p_ab(&head_of_a, &head_of_b, 'b');
-	// p_ab(&head_of_a, &head_of_b, 'b');
-	// p_ab(&head_of_a, &head_of_b, 'b');
-	// p_ab(&head_of_a, &head_of_b, 'b');
-	// p_ab(&head_of_a, &head_of_b, 'b');
-	// p_ab(&head_of_a, &head_of_b, 'b');
+	// ss_ab(head_of_a, head_of_b, 'a');
 	// ss_ab(head_of_a, head_of_b, 'b');
+
+	// rr_ab(head_of_a, head_of_b, 'a');
 	// rr_ab(head_of_a, head_of_b, 'b');
+
+	// rrr_ab(head_of_a, head_of_b, 'a');
 	// rrr_ab(head_of_a, head_of_b, 'b');
 
+	p_ab(&head_of_a, &head_of_b, 'b');
+	p_ab(&head_of_a, &head_of_b, 'b');
+	p_ab(&head_of_a, &head_of_b, 'b');
+	p_ab(&head_of_a, &head_of_b, 'b');
+	p_ab(&head_of_a, &head_of_b, 'b');
+	p_ab(&head_of_a, &head_of_b, 'b');
+	p_ab(&head_of_a, &head_of_b, 'b');
+	p_ab(&head_of_a, &head_of_b, 'b');
+	
 	ft_print_lst(head_of_a, 'A');
-	
-	// ft_print_lst(head_of_b, 'B');
 
-	// ss_ab(head_of_a, head_of_b, 'b');
-
-	
 	ft_print_lst(head_of_b, 'B');
 	
 	//End

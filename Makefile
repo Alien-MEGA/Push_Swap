@@ -6,15 +6,15 @@
 #    By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/22 16:23:50 by reben-ha          #+#    #+#              #
-#    Updated: 2022/12/22 16:23:52 by reben-ha         ###   ########.fr        #
+#    Updated: 2022/12/28 14:59:21 by reben-ha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = 
+NAME = push_swap.a
 
-SRC = 
+SRC = ft_linked_list.c ft_atoi.c ft_push_swap.c rule_psr.c
 
-OBJ = 
+OBJ = ft_linked_list.o ft_atoi.o ft_push_swap.o rule_psr.o
 
 all : $(NAME)
 
@@ -22,7 +22,7 @@ $(NAME) : $(OBJ)
 	ar -rc $(NAME) $(OBJ)
 bonus : $(BOBJ)
 	ar -rc $(NAME) $(BOBJ)
-%.o : %.c #library.h
+%.o : %.c push_swap.h
 	cc -Wall -Wextra -Werror -c $< -o $@
 clean :
 	rm -f $(OBJ)
@@ -30,6 +30,11 @@ clean :
 fclean : clean
 	rm -f $(NAME)
 re : fclean all
-just : re
+
+test :
+	make
 	make clean
-.PHONY = all bonus clean fclean re just
+	gcc push_swap.a -o push_swap
+	rm -
+	./push_swap 11 22 33 44 55 66 77 88 99
+.PHONY = all bonus clean fclean re test
