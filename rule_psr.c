@@ -6,35 +6,27 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 17:20:20 by reben-ha          #+#    #+#             */
-/*   Updated: 2022/12/29 21:57:32 by reben-ha         ###   ########.fr       */
+/*   Updated: 2022/12/29 22:36:51 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	p_ab(t_list **head_of_a, t_list **head_of_b, int option)
+void	p_ab(t_list **from_lst, t_list **to_lst, int option)
 {
 	t_list	*tmp_node;
 
-	if ((!head_of_a || !(*head_of_a))
-		|| !(head_of_b || !(*head_of_b)))
+	if ((!from_lst || !(*from_lst))
+		|| !(to_lst || !(*to_lst)))
 		return ;
+	ft_lstadd_front(to_lst, ft_lstnew((*from_lst)->data));
+	tmp_node = (*from_lst);
+	(*from_lst) = (*from_lst)->next;
+	free(tmp_node);
 	if (option == 'a')
-	{
-		ft_lstadd_front(head_of_a, ft_lstnew((*head_of_b)->data));
-		tmp_node = (*head_of_b);
-		(*head_of_b) = (*head_of_b)->next;
-		free(tmp_node);
 		write(1, "pa\n", 3);
-	}
 	if (option == 'b')
-	{
-		ft_lstadd_front(head_of_b, ft_lstnew((*head_of_a)->data));
-		tmp_node = (*head_of_a);
-		(*head_of_a) = (*head_of_a)->next;
-		free(tmp_node);
 		write(1, "pb\n", 3);
-	}
 }
 
 void	ss_ab(t_list *head_of_a, t_list *head_of_b, int option)
