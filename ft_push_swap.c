@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2022/12/29 22:55:31 by reben-ha         ###   ########.fr       */
+/*   Updated: 2022/12/29 23:09:43 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	main(int argc, char *argv[])
 	while (head_of_b)
 		p_ab(&head_of_b, &head_of_a, 'a');
 	// ft_print_lst(head_of_a, 'A');
-	// ft_print_lst(head_of_b, 'B');
+	// ft_print_lst(head_of_b, 'B');jbknk
 
 }
 	
