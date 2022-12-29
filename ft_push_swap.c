@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2022/12/29 23:34:08 by reben-ha         ###   ########.fr       */
+/*   Updated: 2022/12/29 23:44:14 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,12 @@ int	main(int argc, char *argv[])
 	// ft_print_lst(head_of_b, 'B');
 
 }
-
-// find LIS
-// move not LIS to 
+/*
+* Find LIS
+* Move not LIS to stack B
+* Find fast way number that can moving to here 
+	place with lowest possible number of operations
+*/
 
 
 
