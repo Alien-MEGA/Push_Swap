@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2022/12/29 18:18:43 by reben-ha         ###   ########.fr       */
+/*   Updated: 2022/12/29 18:25:05 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,66 +50,34 @@ int	main(int argc, char *argv[])
 		i++;
 	}
 
-	//Test for linked list
-	printf("\n\n\n\nStart :\n\n");
-	head_of_b = NULL;
-	tmp_node = head_of_a;
-	ft_print_lst(head_of_a, 'A');
-	ft_print_lst(head_of_b, 'B');
-	printf("\n\n1 = New :\n\n");
+}
+	
+	// //Test for linked list
+	// printf("\n\n\n\nStart :\n\n");
+	// head_of_b = NULL;
+	// tmp_node = head_of_a;
+	// ft_print_lst(head_of_a, 'A');
+	// ft_print_lst(head_of_b, 'B');
+	// printf("\n\n1 = New :\n\n");
 
 	// p_ab(&head_of_a, &head_of_b, 'a');
 	// p_ab(&head_of_a, &head_of_b, 'b');
+	// p_ab(&head_of_a, &head_of_b, 'X');
 
 	// ss_ab(head_of_a, head_of_b, 'a');
 	// ss_ab(head_of_a, head_of_b, 'b');
-
-	// rr_ab(head_of_a, head_of_b, 'a');
-	// rr_ab(head_of_a, head_of_b, 'b');
-
-	// rrr_ab(head_of_a, head_of_b, 'a');
-	// rrr_ab(head_of_a, head_of_b, 'b');
-
-	p_ab(&head_of_a, &head_of_b, 'b');
-	p_ab(&head_of_a, &head_of_b, 'b');
-	p_ab(&head_of_a, &head_of_b, 'b');
-	p_ab(&head_of_a, &head_of_b, 'b');
-	// p_ab(&head_of_a, &head_of_b, 'b');
-	// p_ab(&head_of_a, &head_of_b, 'b');
-	// p_ab(&head_of_a, &head_of_b, 'b');
-	// p_ab(&head_of_a, &head_of_b, 'b');
-	// p_ab(&head_of_a, &head_of_b, 'b');
-	// p_ab(&head_of_a, &head_of_b, 'b');
-	// p_ab(&head_of_a, &head_of_b, 'b');
-	// p_ab(&head_of_a, &head_of_b, 'b');
-
-	// p_ab(&head_of_a, &head_of_b, 'a');
-	// p_ab(&head_of_a, &head_of_b, 'a');
-	// p_ab(&head_of_a, &head_of_b, 'a');
-	// p_ab(&head_of_a, &head_of_b, 'a');
-	// p_ab(&head_of_a, &head_of_b, 'a');
-	// p_ab(&head_of_a, &head_of_b, 'a');
-	// p_ab(&head_of_a, &head_of_b, 'a');
-	// p_ab(&head_of_a, &head_of_b, 'a');
-	// p_ab(&head_of_a, &head_of_b, 'a');
-	// p_ab(&head_of_a, &head_of_b, 'a');
-
-	// ss_ab(head_of_a, head_of_b, 'X');
 	// ss_ab(head_of_a, head_of_b, 'X');
 
-	// rr_ab(&head_of_a, &head_of_b, 'b');
-	// rr_ab(&head_of_a, &head_of_b, 'b');
-	// rr_ab(&head_of_a, &head_of_b, 'b');
-	// rr_ab(&head_of_a, &head_of_b, 'b');
-	
-	// rrr_ab(&head_of_a, &head_of_b, 'b');
 	// rr_ab(&head_of_a, &head_of_b, 'a');
-	rrr_ab(&head_of_a, &head_of_b, 'X');
+	// rr_ab(&head_of_a, &head_of_b, 'b');
+	// rr_ab(&head_of_a, &head_of_b, 'X');
 
-	ft_print_lst(head_of_a, 'A');
+	// rrr_ab(&head_of_a, &head_of_b, 'a');
+	// rrr_ab(&head_of_a, &head_of_b, 'b');
+	// rrr_ab(&head_of_a, &head_of_b, 'X');
 
-	ft_print_lst(head_of_b, 'B');
+	// ft_print_lst(head_of_a, 'A');
+
+	// ft_print_lst(head_of_b, 'B');
 	
-	//End
-}
-	
+	// //End
