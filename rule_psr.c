@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 17:20:20 by reben-ha          #+#    #+#             */
-/*   Updated: 2022/12/28 22:54:26 by reben-ha         ###   ########.fr       */
+/*   Updated: 2022/12/29 18:14:15 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,16 +112,14 @@ void	rrr_ab(t_list **head_of_a, t_list **head_of_b, int option)
 		{
 			if (*head_of_a == NULL)
 				return;
-			tmp_a = *head_of_a; // save tmp for first node
-			last_a = NULL;
+			tmp_a = (*head_of_a);
 			while (tmp_a->next)
 			{
-				last_a = tmp_a; // save node before last node
-				tmp_a = tmp_a->next; // last node
+				last_a = tmp_a;
+				tmp_a = tmp_a->next;
 			}
-			last_a->next = NULL; // Unlink node
-			tmp_a->next = *head_of_a;
-			*head_of_a = tmp_a;
+			last_a->next = NULL;
+			ft_lstadd_front(head_of_a, tmp_a);
 			if (option == 'a')
 				write(1, "rra\n", 4);
 		}
@@ -129,16 +127,14 @@ void	rrr_ab(t_list **head_of_a, t_list **head_of_b, int option)
 		{
 			if (*head_of_b == NULL)
 				return;
-			tmp_b = *head_of_b;
-			last_b = NULL;
+			tmp_b = (*head_of_b);
 			while (tmp_b->next)
 			{
 				last_b = tmp_b;
 				tmp_b = tmp_b->next;
 			}
 			last_b->next = NULL;
-			tmp_b->next = *head_of_b;
-			*head_of_b = tmp_b;
+			ft_lstadd_front(head_of_b, tmp_b);
 			if (option == 'b')
 				write(1, "rrb\n", 4);
 		}
