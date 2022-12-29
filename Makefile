@@ -6,7 +6,7 @@
 #    By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/22 16:23:50 by reben-ha          #+#    #+#              #
-#    Updated: 2022/12/28 18:14:08 by reben-ha         ###   ########.fr        #
+#    Updated: 2022/12/29 21:42:55 by reben-ha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,22 +19,22 @@ OBJ = ft_linked_list.o ft_atoi.o ft_push_swap.o rule_psr.o
 all : $(NAME)
 
 $(NAME) : $(OBJ)
-	ar -rc $(NAME) $(OBJ)
+	@ar -rc $(NAME) $(OBJ)
 bonus : $(BOBJ)
-	ar -rc $(NAME) $(BOBJ)
+	@ar -rc $(NAME) $(BOBJ)
 %.o : %.c push_swap.h
-	cc -Wall -Wextra -Werror -c $< -o $@
+	@cc -Wall -Wextra -Werror -c $< -o $@
 clean :
-	rm -f $(OBJ)
-	rm -f $(BOBJ)
+	@rm -f $(OBJ)
+	@rm -f $(BOBJ)
 fclean : clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 re : fclean all
 
-run :
-	make
-	make clean
-	gcc push_swap.a -o push_swap
-	rm -f push_swap.a
-	./push_swap 44 33 22 11 11 22 33 44
+app : re
+	@make clean
+	@gcc push_swap.a -o push_swap
+	@rm -f push_swap.a
+run : app
+	@./push_swap 23 7567 234 12 222 13123  123123 4323 1
 .PHONY = all bonus clean fclean re run

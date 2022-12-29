@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2022/12/29 18:25:05 by reben-ha         ###   ########.fr       */
+/*   Updated: 2022/12/29 21:58:36 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,53 @@ int	main(int argc, char *argv[])
 	t_list	*tmp_node;
 	t_list	*head_of_b;
 	int		i;
+	int		min_nb;
 
 	if (argc <= 1)
 		return (ft_error(), 0);
 	i = 1;
 	while (i < argc)
-	{
-		ft_lstadd_back(&head_of_a, (ft_lstnew(ft_atoi(argv[i]))));
-		i++;
+		ft_lstadd_back(&head_of_a, (ft_lstnew(ft_atoi(argv[i++]))));
+	printf("\n\n\n\n\n\n\n");
+	ft_print_lst(head_of_a, 'A');
+	printf("\n\n\n\n\n\n\n");
+
+	while (head_of_a)
+	{	
+		tmp_node = head_of_a;
+		min_nb = tmp_node->data;
+		tmp_node = tmp_node->next;
+		while (tmp_node)
+		{
+			min_nb = (min_nb <= tmp_node->data ? min_nb : tmp_node->data);
+			tmp_node = tmp_node->next;
+		}
+		while (min_nb != head_of_a->data)
+			rr_ab(&head_of_a, &head_of_b, 'a');
+		p_ab(&head_of_a, &head_of_b, 'b');
 	}
+	ft_print_lst(head_of_a, 'A');
+	ft_print_lst(head_of_b, 'B');
+
+
+	p_ab(&head_of_b, &head_of_a, 'b');
+	ft_print_lst(head_of_a, 'A');
+	// ft_print_lst(head_of_b, 'B');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
 	
