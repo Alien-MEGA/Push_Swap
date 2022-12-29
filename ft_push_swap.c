@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2022/12/29 22:40:12 by reben-ha         ###   ########.fr       */
+/*   Updated: 2022/12/29 22:55:31 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ void ft_print_lst(t_list *head, int option)
 
 static void	ft_error(void)
 {
-	write(1, "\e[1;31m[ERROR]", 14);
-	write(1, " : Add more argument!\n", 22);
-	write(1 ,"\e[0m        ./a.out . . .\n", 26);
-	write(1 ,"\e[1;32m                ^~~~~\n", 29);
-	write(1 ,"\e[0m1 warning generated.\n", 25);
+	write(2, "\e[1;31m[ERROR]", 14);
+	write(2, " : Add more argument!\n", 22);
+	write(2 ,"\e[0m        ./a.out . . .\n", 26);
+	write(2 ,"\e[1;32m                ^~~~~\n", 29);
+	write(2 ,"\e[0m1 warning generated.\n", 25);
 }
 
 int	main(int argc, char *argv[])
@@ -47,9 +47,9 @@ int	main(int argc, char *argv[])
 	i = 1;
 	while (i < argc)
 		ft_lstadd_back(&head_of_a, (ft_lstnew(ft_atoi(argv[i++]))));
-	printf("\n\n\n\n\n\n\n");
-	ft_print_lst(head_of_a, 'A');
-	printf("\n\n\n\n\n\n\n");
+	// printf("\n\n\n\n\n\n\n");
+	// ft_print_lst(head_of_a, 'A');
+	// printf("\n\n\n\n\n\n\n");
 
 	while (head_of_a)
 	{	
@@ -68,24 +68,10 @@ int	main(int argc, char *argv[])
 	// ft_print_lst(head_of_a, 'A');
 	// ft_print_lst(head_of_b, 'B');
 
-	p_ab(&head_of_b, &head_of_a, 'b');
-	ft_print_lst(head_of_a, 'A');
+	while (head_of_b)
+		p_ab(&head_of_b, &head_of_a, 'a');
+	// ft_print_lst(head_of_a, 'A');
 	// ft_print_lst(head_of_b, 'B');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
 	
