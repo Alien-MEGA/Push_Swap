@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2022/12/30 16:15:42 by reben-ha         ###   ########.fr       */
+/*   Updated: 2022/12/30 20:47:21 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,64 @@ int	main(int argc, char *argv[])
 	// printf("\n\n\n\n\n\n\n");
 
 	
+	/*
+	* Find LIS
+	* Move not LIS to stack B
+	* Find fast way number that can moving to here 
+		place with lowest possible number of operations
+	*/
+	
+	while (head_of_a->next != NULL)
+	{
+			
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 
 
@@ -62,12 +120,6 @@ int	main(int argc, char *argv[])
 	// ft_print_lst(head_of_a, 'A');
 	// ft_print_lst(head_of_b, 'B');
 }
-/*
-* Find LIS
-* Move not LIS to stack B
-* Find fast way number that can moving to here 
-	place with lowest possible number of operations
-*/
 
 
 

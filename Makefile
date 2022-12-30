@@ -6,7 +6,7 @@
 #    By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/22 16:23:50 by reben-ha          #+#    #+#              #
-#    Updated: 2022/12/29 23:04:41 by reben-ha         ###   ########.fr        #
+#    Updated: 2022/12/30 21:00:30 by reben-ha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ app : re
 	@gcc push_swap.a -o push_swap
 	@rm -f push_swap.a
 run : app
-	@./push_swap 23 7567 234 12 222 13123  123123 4323 1
+	@./push_swap 3 9 6 10 5 7 4 1 8 2
 gitpush : 
 	git add .
 	git commit -m "tmp"
