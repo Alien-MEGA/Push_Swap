@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2022/12/29 23:50:03 by reben-ha         ###   ########.fr       */
+/*   Updated: 2022/12/30 16:15:42 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,36 +51,46 @@ int	main(int argc, char *argv[])
 	// ft_print_lst(head_of_a, 'A');
 	// printf("\n\n\n\n\n\n\n");
 
-	while (head_of_a)
-	{	
-		tmp_node = head_of_a;
-		min_nb = tmp_node->data;
-		tmp_node = tmp_node->next;
-		while (tmp_node)
-		{
-			min_nb = (min_nb <= tmp_node->data ? min_nb : tmp_node->data);
-			tmp_node = tmp_node->next;
-		}
-		while (min_nb != head_of_a->data)
-			rr_ab(&head_of_a, &head_of_b, 'a');
-		p_ab(&head_of_a, &head_of_b, 'b');
-	}
+	
+
+
+
+
+
+
+
 	// ft_print_lst(head_of_a, 'A');
 	// ft_print_lst(head_of_b, 'B');
-
-	while (head_of_b)
-		p_ab(&head_of_b, &head_of_a, 'a');
-	// ft_print_lst(head_of_a, 'A');
-	// ft_print_lst(head_of_b, 'B');
-
 }
-/* 
+/*
 * Find LIS
 * Move not LIS to stack B
 * Find fast way number that can moving to here 
 	place with lowest possible number of operations
 */
 
+
+
+
+
+
+	// My algo :
+	// while (head_of_a)
+	// {	
+	// 	tmp_node = head_of_a;
+	// 	min_nb = tmp_node->data;
+	// 	tmp_node = tmp_node->next;
+	// 	while (tmp_node)
+	// 	{
+	// 		min_nb = (min_nb <= tmp_node->data ? min_nb : tmp_node->data);
+	// 		tmp_node = tmp_node->next;
+	// 	}
+	// 	while (min_nb != head_of_a->data)
+	// 		rr_ab(&head_of_a, &head_of_b, 'a');
+	// 	p_ab(&head_of_a, &head_of_b, 'b');
+	// }
+	// while (head_of_b)
+	// 	p_ab(&head_of_b, &head_of_a, 'a');
 
 
 

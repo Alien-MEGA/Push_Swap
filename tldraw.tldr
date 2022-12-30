@@ -142,7 +142,7 @@
             "parentId": "page",
             "childIndex": 31,
             "point": [
-              691.06,
+              692.06,
               -1059.51
             ],
             "rotation": 0,
@@ -164,7 +164,7 @@
             "parentId": "page",
             "childIndex": 32,
             "point": [
-              773.92,
+              774.92,
               -1438.91
             ],
             "rotation": 0,
@@ -31558,122 +31558,6 @@
               ]
             ],
             "isComplete": true
-          },
-          "fbdc4c5b-e3ad-43df-183b-f531cc8c70e4": {
-            "id": "fbdc4c5b-e3ad-43df-183b-f531cc8c70e4",
-            "type": "draw",
-            "name": "Draw",
-            "parentId": "page",
-            "childIndex": 411,
-            "point": [
-              -874.11,
-              -418.4
-            ],
-            "rotation": 0,
-            "style": {
-              "color": "black",
-              "size": "small",
-              "isFilled": false,
-              "dash": "draw",
-              "scale": 1
-            },
-            "points": [
-              [
-                0,
-                0.11,
-                0.5
-              ],
-              [
-                0,
-                0.11,
-                0.5
-              ],
-              [
-                0.36,
-                0,
-                0.5
-              ],
-              [
-                1.32,
-                0,
-                0.5
-              ],
-              [
-                4.95,
-                0,
-                0.5
-              ],
-              [
-                8.57,
-                0,
-                0.5
-              ],
-              [
-                10.2,
-                0,
-                0.5
-              ],
-              [
-                11.07,
-                0,
-                0.5
-              ]
-            ],
-            "isComplete": true
-          },
-          "99e638cd-0ebd-4a34-125b-e6cfcc35259d": {
-            "id": "99e638cd-0ebd-4a34-125b-e6cfcc35259d",
-            "type": "draw",
-            "name": "Draw",
-            "parentId": "page",
-            "childIndex": 412,
-            "point": [
-              -614.02,
-              -612.39
-            ],
-            "rotation": 0,
-            "style": {
-              "color": "black",
-              "size": "small",
-              "isFilled": false,
-              "dash": "draw",
-              "scale": 1
-            },
-            "points": [
-              [
-                0,
-                0,
-                0.5
-              ],
-              [
-                0,
-                0,
-                0.5
-              ]
-            ],
-            "isComplete": true
-          },
-          "b6604531-341e-45d2-1fc2-85e8a7f67928": {
-            "id": "b6604531-341e-45d2-1fc2-85e8a7f67928",
-            "type": "text",
-            "name": "Text",
-            "parentId": "page",
-            "childIndex": 413,
-            "point": [
-              -832.08,
-              -250.4
-            ],
-            "rotation": 0,
-            "text": "4   55   2 ",
-            "style": {
-              "color": "black",
-              "size": "small",
-              "isFilled": false,
-              "dash": "draw",
-              "scale": 3.0395927763713066,
-              "font": "script",
-              "textAlign": "middle"
-            }
           }
         },
         "bindings": {
