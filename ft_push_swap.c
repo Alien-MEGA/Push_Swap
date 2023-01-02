@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/02 23:00:15 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/02 23:08:07 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,28 +81,24 @@ int	main(int argc, char *argv[])
 		i++;
 		tmp_node = tmp_node->next;
 	}
-	i = 1;
-	while ()
-	{
-		j = 0;
-		while (j < i)
-		{
-			if (n_index(stack_a, j) < n_index(stack_a, i))
-			{
-				n_index(stack_a, i)->lis += n_index(stack_a, j)->lis;
-				n_index(stack_a, i)->sub_index = n_index(stack_a, j)->index;
-			}
-			j++;
-		}
-		i++;
-	}
-		// {
-		// 	/* code */
-		// }
+	
 
 
-
-
+	// i = 1;
+	// while (n_index(stack_a, i)->next != NULL)
+	// {
+	// 	j = 0;
+	// 	while (j < i)
+	// 	{
+	// 		if (n_index(stack_a, j) < n_index(stack_a, i))
+	// 		{
+	// 			n_index(stack_a, i)->lis += n_index(stack_a, j)->lis;
+	// 			n_index(stack_a, i)->sub_index = n_index(stack_a, j)->index;
+	// 		}
+	// 		j++;
+	// 	}
+	// 	i++;
+	// }
 
 
 
