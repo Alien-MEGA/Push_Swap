@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2022/12/30 21:18:35 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/02 17:29:56 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void ft_print_lst(t_list *head, int option)
 {	
 	while (head != NULL)
 	{
-		printf("\n%d", head->data);
+		printf("\n%d = data, %d = index, %d = index_of_last, %d = lis", head->data, head->index, head->index_of_last, head->lis);
 		head = head->next;
 	}
 	if (option == 'A')
@@ -38,9 +38,9 @@ int	main(int argc, char *argv[])
 {
 	t_list	*head_of_a;
 	t_list	*tmp_node;
-	t_list	*head_of_b;
 	int		i;
-	int		min_nb;
+	// t_list	*head_of_b;
+	// int		min_nb;
 
 	if (argc <= 1)
 		return (ft_error(), 0);
@@ -58,12 +58,19 @@ int	main(int argc, char *argv[])
 	* Find fast way number that can moving to here 
 		place with lowest possible number of operations
 	*/
-	
-	while (head_of_a->next != NULL)
+	i = 0;
+	tmp_node = head_of_a;
+	while (tmp_node)
 	{
-		
+		tmp_node->index = i;
+		tmp_node->lis = 1;
+		i++;
+		tmp_node = tmp_node->next;
 	}
+	ft_print_lst(head_of_a, 'A');
 
+
+	
 
 
 

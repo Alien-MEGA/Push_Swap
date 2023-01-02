@@ -6,7 +6,7 @@
 #    By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/22 16:23:50 by reben-ha          #+#    #+#              #
-#    Updated: 2022/12/30 21:00:30 by reben-ha         ###   ########.fr        #
+#    Updated: 2023/01/02 17:30:48 by reben-ha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,6 @@ run : app
 	@./push_swap 3 9 6 10 5 7 4 1 8 2
 gitpush : 
 	git add .
-	git commit -m "tmp"
+	git commit -m "Push-Swap"
 	git push
 .PHONY = all bonus clean fclean re run
