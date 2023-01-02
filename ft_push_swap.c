@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/02 23:08:07 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/02 23:52:19 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void ft_print_lst(t_list *head, int option)
 		printf("\n-----------------------------------------------\n                      B\n");
 }
 
-t_list	*n_index(t_list *head, int index)
+t_list	*in(t_list *head, int index)
 {
 	while (head)
 	{
@@ -81,25 +81,29 @@ int	main(int argc, char *argv[])
 		i++;
 		tmp_node = tmp_node->next;
 	}
-	
+	ft_print_lst(stack_a, 'A');
 
+	i = 1;
+	while (in(stack_a, i)->next != NULL)
+	{
+		j = 0;
+		while (j <= i)
+		{
+			if (in(stack_a, j) < in(stack_a, i))
+			{
+				if ()
+				{
+					in(stack_a, i)->lis += in(stack_a, j)->lis;
+				}
+				printf("j %d == %d i\nLIS = %d\n", in(stack_a, j)->data, in(stack_a, i)->data, in(stack_a, i)->lis);
+				// in(stack_a, i)->sub_index = in(stack_a, j)->index;
+			}
+			j++;
+		}
+		i++;
+	}
 
-	// i = 1;
-	// while (n_index(stack_a, i)->next != NULL)
-	// {
-	// 	j = 0;
-	// 	while (j < i)
-	// 	{
-	// 		if (n_index(stack_a, j) < n_index(stack_a, i))
-	// 		{
-	// 			n_index(stack_a, i)->lis += n_index(stack_a, j)->lis;
-	// 			n_index(stack_a, i)->sub_index = n_index(stack_a, j)->index;
-	// 		}
-	// 		j++;
-	// 	}
-	// 	i++;
-	// }
-
+	// ft_print_lst(stack_a, 'A');
 
 
 
