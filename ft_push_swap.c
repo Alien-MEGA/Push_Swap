@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/02 22:28:17 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/02 23:00:15 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void ft_print_lst(t_list *head, int option)
 {	
 	while (head != NULL)
 	{
-		printf("\ndata = %d  index = %d  index_of_last = %d  lis = %d", head->data, head->index, head->index_of_last, head->lis);
+		printf("\ndata = %d  index = %d  sub_index = %d  lis = %d", head->data, head->index, head->sub_index, head->lis);
 		head = head->next;
 	}
 	if (option == 'A')
@@ -76,20 +76,29 @@ int	main(int argc, char *argv[])
 	while (tmp_node)
 	{
 		tmp_node->index = i;
-		tmp_node->index_of_last = 0;
+		tmp_node->sub_index = 0;
 		tmp_node->lis = 1;
 		i++;
 		tmp_node = tmp_node->next;
 	}
-
+	i = 1;
 	while ()
 	{
-		while (n_index(stack_a, j) < n_index(stack_a, i))
+		j = 0;
+		while (j < i)
 		{
+			if (n_index(stack_a, j) < n_index(stack_a, i))
+			{
+				n_index(stack_a, i)->lis += n_index(stack_a, j)->lis;
+				n_index(stack_a, i)->sub_index = n_index(stack_a, j)->index;
+			}
 			j++;
 		}
 		i++;
 	}
+		// {
+		// 	/* code */
+		// }
 
 
 
