@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/02 20:56:43 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/02 21:00:26 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ int	main(int argc, char *argv[])
 		i++;
 		tmp_node = tmp_node->next;
 	}
+	
+	
 	
 
 
