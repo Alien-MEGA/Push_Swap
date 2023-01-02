@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/02 17:29:56 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/02 20:56:43 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,25 @@ void ft_print_lst(t_list *head, int option)
 {	
 	while (head != NULL)
 	{
-		printf("\n%d = data, %d = index, %d = index_of_last, %d = lis", head->data, head->index, head->index_of_last, head->lis);
+		printf("\ndata = %d  index = %d  index_of_last = %d  lis = %d", head->data, head->index, head->index_of_last, head->lis);
 		head = head->next;
 	}
 	if (option == 'A')
-		printf("\n-\nA\n");
+		printf("\n-----------------------------------------------\n                      A\n");
 	if (option == 'B')
-		printf("\n-\nB\n");	
+		printf("\n-----------------------------------------------\n                      B\n");
+}
+
+t_list	*node_i(t_list *head, int index)
+{
+	while (head)
+	{
+		
+		if (head->index == index)
+			return (head);
+		head = head->next;
+	}
+	return (NULL);
 }
 
 static void	ft_error(void)
@@ -36,7 +48,7 @@ static void	ft_error(void)
 
 int	main(int argc, char *argv[])
 {
-	t_list	*head_of_a;
+	t_list	*stack_a;
 	t_list	*tmp_node;
 	int		i;
 	// t_list	*head_of_b;
@@ -46,7 +58,7 @@ int	main(int argc, char *argv[])
 		return (ft_error(), 0);
 	i = 1;
 	while (i < argc)
-		ft_lstadd_back(&head_of_a, (ft_lstnew(ft_atoi(argv[i++]))));
+		ft_lstadd_back(&stack_a, (ft_lstnew(ft_atoi(argv[i++]))));
 	// printf("\n\n\n\n\n\n\n");
 	// ft_print_lst(head_of_a, 'A');
 	// printf("\n\n\n\n\n\n\n");
@@ -59,18 +71,22 @@ int	main(int argc, char *argv[])
 		place with lowest possible number of operations
 	*/
 	i = 0;
-	tmp_node = head_of_a;
+	tmp_node = stack_a;
 	while (tmp_node)
 	{
 		tmp_node->index = i;
+		tmp_node->index_of_last = 0;
 		tmp_node->lis = 1;
 		i++;
 		tmp_node = tmp_node->next;
 	}
-	ft_print_lst(head_of_a, 'A');
-
-
 	
+
+
+
+
+
+
 
 
 
@@ -132,7 +148,6 @@ int	main(int argc, char *argv[])
 
 
 
-
 	// My algo :
 	// while (head_of_a)
 	// {	
@@ -150,8 +165,6 @@ int	main(int argc, char *argv[])
 	// }
 	// while (head_of_b)
 	// 	p_ab(&head_of_b, &head_of_a, 'a');
-
-
 
 
 	// //Test for linked list
