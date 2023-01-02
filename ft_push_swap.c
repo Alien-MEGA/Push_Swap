@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/02 21:00:26 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/02 22:28:17 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void ft_print_lst(t_list *head, int option)
 		printf("\n-----------------------------------------------\n                      B\n");
 }
 
-t_list	*node_i(t_list *head, int index)
+t_list	*n_index(t_list *head, int index)
 {
 	while (head)
 	{
@@ -51,6 +51,7 @@ int	main(int argc, char *argv[])
 	t_list	*stack_a;
 	t_list	*tmp_node;
 	int		i;
+	int		j;
 	// t_list	*head_of_b;
 	// int		min_nb;
 
@@ -80,17 +81,15 @@ int	main(int argc, char *argv[])
 		i++;
 		tmp_node = tmp_node->next;
 	}
-	
-	
-	
 
-
-
-
-
-
-
-
+	while ()
+	{
+		while (n_index(stack_a, j) < n_index(stack_a, i))
+		{
+			j++;
+		}
+		i++;
+	}
 
 
 
