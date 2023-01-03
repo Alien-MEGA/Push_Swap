@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/03 15:08:27 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/03 17:25:29 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int	main(int argc, char *argv[])
 {
 	t_list	*stack_a;
 	t_list	*tmp_node;
+	int		lis;
 	int		i;
 	int		j;
 	// t_list	*head_of_b;
@@ -82,26 +83,25 @@ int	main(int argc, char *argv[])
 		tmp_node = tmp_node->next;
 	}
 	ft_print_lst(stack_a, 'A');
-
 	i = 1;
 	while (in(stack_a, i)->next != NULL)
 	{
 		j = 0;
-		while (j <= i)
+		lis = 0;
+		while (j < i)
 		{
 			if (in(stack_a, j) < in(stack_a, i))
 			{
-				if ()
-				{
-					in(stack_a, i)->lis += in(stack_a, j)->lis;
-				}
-				printf("j %d == %d i\nLIS = %d\n", in(stack_a, j)->data, in(stack_a, i)->data, in(stack_a, i)->lis);
+				if (lis < in(stack_a, j)->lis)
+					lis = in(stack_a, j)->lis;
 				// in(stack_a, i)->sub_index = in(stack_a, j)->index;
 			}
 			j++;
 		}
+		in(stack_a, i)->lis += lis;
 		i++;
 	}
+	ft_print_lst(stack_a, 'A');
 
 	// ft_print_lst(stack_a, 'A');
 
