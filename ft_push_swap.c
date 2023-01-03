@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/03 19:54:56 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/03 20:22:46 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int	main(int argc, char *argv[])
 	t_list	*stack_a;
 	t_list	*tmp_node;
 	int		sub_index;
+	int		max_lis;
 	int		lis;
 	int		i;
 	int		j;
@@ -106,7 +107,16 @@ int	main(int argc, char *argv[])
 		i++;
 	}
 	ft_print_lst(stack_a, 'A');
-
+	i = 0;
+	max_lis = -1;
+	while (in(stack_a, ++i))
+		max_lis = (max_lis < in(stack_a, i)->lis ? in(stack_a, i)->lis : max_lis);
+	
+	while (/* condition */)
+	{
+		/* code */
+	}
+	
 	
 
 
