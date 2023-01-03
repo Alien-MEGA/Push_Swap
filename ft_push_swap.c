@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/03 17:25:29 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/03 19:54:56 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ t_list	*in(t_list *head, int index)
 {
 	while (head)
 	{
-		
 		if (head->index == index)
 			return (head);
 		head = head->next;
@@ -50,6 +49,7 @@ int	main(int argc, char *argv[])
 {
 	t_list	*stack_a;
 	t_list	*tmp_node;
+	int		sub_index;
 	int		lis;
 	int		i;
 	int		j;
@@ -77,33 +77,37 @@ int	main(int argc, char *argv[])
 	while (tmp_node)
 	{
 		tmp_node->index = i;
-		tmp_node->sub_index = 0;
+		tmp_node->sub_index = -1;
 		tmp_node->lis = 1;
 		i++;
 		tmp_node = tmp_node->next;
 	}
 	ft_print_lst(stack_a, 'A');
 	i = 1;
-	while (in(stack_a, i)->next != NULL)
+	while (in(stack_a, i))
 	{
 		j = 0;
-		lis = 0;
+		lis = 1;
+		sub_index = -1;
 		while (j < i)
 		{
-			if (in(stack_a, j) < in(stack_a, i))
+			if (in(stack_a, j)->data < in(stack_a, i)->data)
 			{
-				if (lis < in(stack_a, j)->lis)
-					lis = in(stack_a, j)->lis;
-				// in(stack_a, i)->sub_index = in(stack_a, j)->index;
+				if (lis < (in(stack_a, j)->lis + in(stack_a, i)->lis))
+				{
+					lis = in(stack_a, j)->lis + in(stack_a, i)->lis;
+					sub_index = in(stack_a, j)->index;
+				}
 			}
 			j++;
 		}
-		in(stack_a, i)->lis += lis;
+		in(stack_a, i)->lis = lis;
+		in(stack_a, i)->sub_index = sub_index;
 		i++;
 	}
 	ft_print_lst(stack_a, 'A');
 
-	// ft_print_lst(stack_a, 'A');
+	
 
 
 
