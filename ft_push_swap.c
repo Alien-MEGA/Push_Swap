@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/05 20:47:51 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/05 22:35:27 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,21 @@ void ft_print_lst(t_list *head, int option)
 		printf("\n-----------------------------------------------\n                      B\n");
 }
 
-t_list	*in(t_list *head, int index)
+static int      ft_check(int check, int *expected, int end)
+{
+	int	i;
+
+	i = 0;
+	while (expected[i] < end)
+	{
+		if (check == expected[i])
+				return (1);
+		i++;
+	}
+	return (0);
+}
+
+static t_list	*in(t_list *head, int index)
 {
 	while (head)
 	{
@@ -55,6 +69,7 @@ static void	ft_error(int option)
 int	main(int argc, char *argv[])
 {
 	t_list	*stack_a;
+	t_list	*stack_b;
 	t_list	*tmp_node;
 	int		lis;
 	int		sub_index;
@@ -139,8 +154,20 @@ int	main(int argc, char *argv[])
 		j++;
 	}
 //                                  * 2 : Move not LIS to stack B
+	i = -1;
 
+	while (in(stack_a, ++i))
+	{
+		while (expected[j] < max_lis)
+		{
+			if (expected[j] == )
+		}
+		
+	}
 	
+
+
+
 
 
 
