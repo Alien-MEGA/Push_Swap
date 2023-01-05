@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/05 16:36:06 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/05 19:10:21 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,11 @@ int	main(int argc, char *argv[])
 	// int		*expected;
 	int		i;
 	int		j;
-	// t_list	*head_of_b;
-	// int		min_nb;
 
-	if (argc <= 1)
+	if (argc <= 1) // if there just 1 arg
 		return (ft_error(1), 0);
 	i = 1;
-	while (i < argc)
+	while (i < argc) // make arg to linked list
 		ft_lstadd_back(&stack_a, (ft_lstnew(ft_atoi(argv[i++]))));
 
 	/*
@@ -79,7 +77,7 @@ int	main(int argc, char *argv[])
 	*/
 	i = 0;
 	tmp_node = stack_a;
-	while (tmp_node)
+	while (tmp_node) // add some info
 	{
 		tmp_node->index = i;
 		tmp_node->sub_index = -1;
@@ -87,9 +85,9 @@ int	main(int argc, char *argv[])
 		i++;
 		tmp_node = tmp_node->next;
 	}
-	ft_print_lst(stack_a, 'A');
+	ft_print_lst(stack_a, 'A'); //test
 	i = 1;
-	while (in(stack_a, i))
+	while (in(stack_a, i)) // find LIS
 	{
 		j = 0;
 		lis = 1;
@@ -110,31 +108,24 @@ int	main(int argc, char *argv[])
 		in(stack_a, i)->sub_index = sub_index;
 		i++;
 	}
-	ft_print_lst(stack_a, 'A');
-	i = 0;
+	// ft_print_lst(stack_a, 'A');  //test
+
 	max_lis = -1;
+	i = -1;
+	j = -1;
 	while (in(stack_a, ++i))
-		max_lis = (max_lis < in(stack_a, i)->lis ? in(stack_a, i)->lis : max_lis);
-	// printf("\n== %d ==", max_lis);
+	{
+		while (in(stack_a, ++j))
+			max_lis = (max_lis < in(stack_a, j)->lis ? in(stack_a, j)->lis : max_lis);
+		if (max_lis == in(stack_a, i)->lis)
+			break;
+	}
 
-	// expected = (int *)malloc( * sizeof(int));
+	in(stack_a, i);
+
+	// expected = (int *)malloc(max_lis * sizeof(int));
 	// if (!expected)
-	// 	return (ft_error(2));
-	// while ()
-	// {
-		
-	// }
-	
-	
-
-
-
-
-
-
-
-
-
+	// 	return (ft_error(2) ,0);
 	
 	
 	
