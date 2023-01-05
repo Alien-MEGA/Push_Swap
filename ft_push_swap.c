@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/05 22:53:56 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/05 22:58:16 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,17 +156,12 @@ int	main(int argc, char *argv[])
 	}
 //                                  * 2 : Move not LIS to stack B
 
-	expected[0] = 3;
-	expected[1] = 9;
-	expected[2] = 6;
-	expected[3] = 5;
-	expected[4] = 7;
-	expected[5] = 4;
-	expected[6] = 1;
-	expected[7] = 8;
-	expected[8] = 2;
-	
-	printf(" 2=== %d === ", ft_check(expected, stack_a));
+	// make all lis -1 an
+	while (ft_check(expected, stack_a))
+	{
+		in(stack_a, i)->lis = -1;
+	}
+	 
 
 
 
