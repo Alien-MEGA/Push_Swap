@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/05 20:40:44 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/05 20:47:51 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,19 +65,20 @@ int	main(int argc, char *argv[])
 
 	if (argc <= 1) // if there just 1 arg
 		return (ft_error(1), 0);
+// make arg to linked list
 	i = 1;
-	while (i < argc) // make arg to linked list
+	while (i < argc)
 		ft_lstadd_back(&stack_a, (ft_lstnew(ft_atoi(argv[i++]))));
-
-	/*
-	* Find LIS
-	* Move not LIS to stack B
-	* Find fast way number that can moving to here 
-		place with lowest possible number of operations
-	*/
+/*	
+	* 1 : Find LIS
+	* 2 : Move not LIS to stack B
+	* 3 : Find fast way number that can moving to here 
+			place with lowest possible number of operations
+*/
+// add some info
 	i = 0;
 	tmp_node = stack_a;
-	while (tmp_node) // add some info
+	while (tmp_node)
 	{
 		tmp_node->index = i;
 		tmp_node->sub_index = -1;
@@ -85,9 +86,12 @@ int	main(int argc, char *argv[])
 		i++;
 		tmp_node = tmp_node->next;
 	}
-	ft_print_lst(stack_a, 'A'); //test
+//test
+	ft_print_lst(stack_a, 'A');
+//                                  * 1 : Find LIS
+// find LIS
 	i = 1;
-	while (in(stack_a, i)) // find LIS
+	while (in(stack_a, i))
 	{
 		j = 0;
 		lis = 1;
@@ -108,8 +112,9 @@ int	main(int argc, char *argv[])
 		in(stack_a, i)->sub_index = sub_index;
 		i++;
 	}
-	// ft_print_lst(stack_a, 'A');  //test
-
+//test
+	ft_print_lst(stack_a, 'A');
+// find len of LIS and the node that has max len_lis
 	max_lis = -1;
 	i = -1;
 	j = -1;
@@ -120,18 +125,22 @@ int	main(int argc, char *argv[])
 		if (max_lis == in(stack_a, i)->lis)
 			break;
 	}
-	ft_print_lst(stack_a, 'A');  //test
-
+//test
+	ft_print_lst(stack_a, 'A');
+// move LIS to array
 	expected = (int *)malloc(max_lis * sizeof(int));
 	if (!expected)
 		return (ft_error(2) ,0);
 	j = 0;
-	while (j < max_lis)
+	while (j < max_lis) 
 	{
 		expected[j] = in(stack_a, i)->data;
 		i = in(stack_a, i)->sub_index;
 		j++;
 	}
+//                                  * 2 : Move not LIS to stack B
+
+	
 
 
 
