@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/05 19:10:21 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/05 20:40:44 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	main(int argc, char *argv[])
 	int		lis;
 	int		sub_index;
 	int		max_lis;
-	// int		*expected;
+	int		*expected;
 	int		i;
 	int		j;
 
@@ -120,42 +120,34 @@ int	main(int argc, char *argv[])
 		if (max_lis == in(stack_a, i)->lis)
 			break;
 	}
+	ft_print_lst(stack_a, 'A');  //test
 
-	in(stack_a, i);
+	expected = (int *)malloc(max_lis * sizeof(int));
+	if (!expected)
+		return (ft_error(2) ,0);
+	j = 0;
+	while (j < max_lis)
+	{
+		expected[j] = in(stack_a, i)->data;
+		i = in(stack_a, i)->sub_index;
+		j++;
+	}
 
-	// expected = (int *)malloc(max_lis * sizeof(int));
-	// if (!expected)
-	// 	return (ft_error(2) ,0);
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
