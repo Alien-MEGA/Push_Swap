@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/03 20:22:46 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/05 16:36:06 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void ft_print_lst(t_list *head, int option)
 {	
 	while (head != NULL)
 	{
-		printf("\ndata = %d  index = %d  sub_index = %d  lis = %d", head->data, head->index, head->sub_index, head->lis);
+		printf("\nindex = %d  data = %d  lis = %d  sub_index = %d", head->index, head->data, head->lis, head->sub_index);
 		head = head->next;
 	}
 	if (option == 'A')
@@ -36,37 +36,41 @@ t_list	*in(t_list *head, int index)
 	return (NULL);
 }
 
-static void	ft_error(void)
+static void	ft_error(int option)
 {
-	write(2, "\e[1;31m[ERROR]", 14);
-	write(2, " : Add more argument!\n", 22);
-	write(2 ,"\e[0m        ./a.out . . .\n", 26);
-	write(2 ,"\e[1;32m                ^~~~~\n", 29);
-	write(2 ,"\e[0m1 warning generated.\n", 25);
+	if (option == 1)
+	{
+		write(2, "\e[1;31m[ERROR] : Add more argument!\n", 37);
+		write(2 ,"\e[0m        ./a.out . . .\n", 26);
+		write(2 ,"\e[1;32m                ^~~~~\n\e[0m1 warning generated.\n", 54);
+	}
+	if (option == 2)
+	{
+		write(2, "\e[1;31m[ERROR]", 14);
+		write(2, " : Malloc failed to allocate memory\n", 36);
+		write(2 ,"\e[0m1 warning generated.\n", 25);
+	}
 }
 
 int	main(int argc, char *argv[])
 {
 	t_list	*stack_a;
 	t_list	*tmp_node;
+	int		lis;
 	int		sub_index;
 	int		max_lis;
-	int		lis;
+	// int		*expected;
 	int		i;
 	int		j;
 	// t_list	*head_of_b;
 	// int		min_nb;
 
 	if (argc <= 1)
-		return (ft_error(), 0);
+		return (ft_error(1), 0);
 	i = 1;
 	while (i < argc)
 		ft_lstadd_back(&stack_a, (ft_lstnew(ft_atoi(argv[i++]))));
-	// printf("\n\n\n\n\n\n\n");
-	// ft_print_lst(head_of_a, 'A');
-	// printf("\n\n\n\n\n\n\n");
 
-	
 	/*
 	* Find LIS
 	* Move not LIS to stack B
@@ -111,11 +115,15 @@ int	main(int argc, char *argv[])
 	max_lis = -1;
 	while (in(stack_a, ++i))
 		max_lis = (max_lis < in(stack_a, i)->lis ? in(stack_a, i)->lis : max_lis);
-	
-	while (/* condition */)
-	{
-		/* code */
-	}
+	// printf("\n== %d ==", max_lis);
+
+	// expected = (int *)malloc( * sizeof(int));
+	// if (!expected)
+	// 	return (ft_error(2));
+	// while ()
+	// {
+		
+	// }
 	
 	
 
