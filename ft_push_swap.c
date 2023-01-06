@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/06 21:27:11 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/06 21:56:05 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,18 +160,21 @@ int	main(int argc, char *argv[])
 //                                  * 2 : Move not LIS to stack B
 
 	tmp_node = stack_a;
-	while (ft_check(expected, stack_a))
-	{
-		if (tmp_node->lis != -1)
-		{
-			printf("%d, %d", tmp_node->data, stack_a->data);
-			// while (tmp_node->data != stack_a->data)
-			// {
+	ft_check(expected, stack_a);
+	printf("%d\n", tmp_node->lis);
+	printf("%d\n", stack_a->data);
+	// while (ft_check(expected, stack_a))
+	// {
+	// 	if (tmp_node->lis != -1)
+	// 	{
+	// 		// printf("%d", tmp_node->data);
+	// 		// while (tmp_node->data != stack_a->data)
+	// 		// {
 				
-			// }
-		}
-		tmp_node = tmp_node->next;
-	}
+	// 		// }
+	// 	}
+	// 	tmp_node = tmp_node->next;
+	// }
 
 
 
