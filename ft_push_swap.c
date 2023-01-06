@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/06 17:29:05 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/06 19:20:43 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,17 +151,14 @@ int	main(int argc, char *argv[])
 	while (j < max_lis) 
 	{
 		expected[j] = in(stack_a, i)->data;
+		in(stack_a, i)->lis = -1;
 		i = in(stack_a, i)->sub_index;
 		j++;
 	}
+	ft_print_lst(stack_a, 'A');
 //                                  * 2 : Move not LIS to stack B
 
-	// make all lis -1 an
-	while (ft_check(expected, stack_a))
-	{
-		in(stack_a, i)->lis = -1;
-	}
-	 
+
 
 
 
@@ -193,56 +190,3 @@ int	main(int argc, char *argv[])
 	// ft_print_lst(head_of_a, 'A');
 	// ft_print_lst(head_of_b, 'B');
 }
-
-
-
-
-
-	// My algo :
-	// while (head_of_a)
-	// {	
-	// 	tmp_node = head_of_a;
-	// 	min_nb = tmp_node->data;
-	// 	tmp_node = tmp_node->next;
-	// 	while (tmp_node)
-	// 	{
-	// 		min_nb = (min_nb <= tmp_node->data ? min_nb : tmp_node->data);
-	// 		tmp_node = tmp_node->next;
-	// 	}
-	// 	while (min_nb != head_of_a->data)
-	// 		rr_ab(&head_of_a, &head_of_b, 'a');
-	// 	p_ab(&head_of_a, &head_of_b, 'b');
-	// }
-	// while (head_of_b)
-	// 	p_ab(&head_of_b, &head_of_a, 'a');
-
-
-	// //Test for linked list
-	// printf("\n\n\n\nStart :\n\n");
-	// head_of_b = NULL;
-	// tmp_node = head_of_a;
-	// ft_print_lst(head_of_a, 'A');
-	// ft_print_lst(head_of_b, 'B');
-	// printf("\n\n1 = New :\n\n");
-
-	// p_ab(&head_of_a, &head_of_b, 'a');
-	// p_ab(&head_of_a, &head_of_b, 'b');
-	// p_ab(&head_of_a, &head_of_b, 'X');
-
-	// ss_ab(head_of_a, head_of_b, 'a');
-	// ss_ab(head_of_a, head_of_b, 'b');
-	// ss_ab(head_of_a, head_of_b, 'X');
-
-	// rr_ab(&head_of_a, &head_of_b, 'a');
-	// rr_ab(&head_of_a, &head_of_b, 'b');
-	// rr_ab(&head_of_a, &head_of_b, 'X');
-
-	// rrr_ab(&head_of_a, &head_of_b, 'a');
-	// rrr_ab(&head_of_a, &head_of_b, 'b');
-	// rrr_ab(&head_of_a, &head_of_b, 'X');
-
-	// ft_print_lst(head_of_a, 'A');
-
-	// ft_print_lst(head_of_b, 'B');
-	
-	// //End
