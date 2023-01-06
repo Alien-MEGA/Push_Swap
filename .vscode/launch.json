@@ -16,20 +16,6 @@
 			"externalConsole": false,
 			"MIMode": "lldb"
 		}
-		
-		{
-			"name": "(lldb) Launch",
-			"type": "cppdbg",
-			"request": "launch",
-			"program": "${workspaceFolder}/push_swap",
-			"args": [55 44 66 77 88],
-			"stopAtEntry": false,
-			"cwd": "${fileDirname}",
-			"environment": [],
-			"externalConsole": false,
-			"MIMode": "lldb"
-		}
-		
 
 	]
 }

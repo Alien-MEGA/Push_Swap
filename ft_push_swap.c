@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/06 19:20:43 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/06 21:27:01 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,11 +155,23 @@ int	main(int argc, char *argv[])
 		i = in(stack_a, i)->sub_index;
 		j++;
 	}
+//test
 	ft_print_lst(stack_a, 'A');
 //                                  * 2 : Move not LIS to stack B
 
-
-
+	tmp_node = stack_a;
+	while (ft_check(expected, stack_a))
+	{
+		if (tmp_node->lis != -1)
+		{
+			printf("%d, %d", tmp_node->data, stack_a->data); // segfault
+			// while (tmp_node->data != stack_a->data)
+			// {
+				
+			// }
+		}
+		tmp_node = tmp_node->next;
+	}
 
 
 
