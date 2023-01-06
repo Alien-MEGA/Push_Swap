@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/06 21:27:01 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/06 21:27:11 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,7 +164,7 @@ int	main(int argc, char *argv[])
 	{
 		if (tmp_node->lis != -1)
 		{
-			printf("%d, %d", tmp_node->data, stack_a->data); // segfault
+			printf("%d, %d", tmp_node->data, stack_a->data);
 			// while (tmp_node->data != stack_a->data)
 			// {
 				

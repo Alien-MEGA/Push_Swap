@@ -6,7 +6,7 @@
 #    By: reben-ha <reben-ha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/22 16:23:50 by reben-ha          #+#    #+#              #
-#    Updated: 2023/01/06 17:28:05 by reben-ha         ###   ########.fr        #
+#    Updated: 2023/01/06 21:39:41 by reben-ha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ $(NAME) : $(OBJ)
 bonus : $(BOBJ)
 	@ar -rc $(NAME) $(BOBJ)
 %.o : %.c push_swap.h
-	@cc -Wall -Wextra -Werror -c $< -o $@
+	@cc -g -Wall -Wextra -Werror -c $< -o $@
 clean :
 	@rm -f $(OBJ)
 	@rm -f $(BOBJ)
