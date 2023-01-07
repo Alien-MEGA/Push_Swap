@@ -6,7 +6,7 @@
 #    By: reben-ha <reben-ha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/22 16:23:50 by reben-ha          #+#    #+#              #
-#    Updated: 2023/01/07 19:39:58 by reben-ha         ###   ########.fr        #
+#    Updated: 2023/01/07 19:40:19 by reben-ha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ app : re
 	@rm -f push_swap.a
 run : app
 	@./push_swap 3 9 6 5 7 4 1 8 2
-gt : app
+sift : app
 	cd ../../push_swap
 	rm -rf *
 	cd ../from\ github/Push_Swap
