@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 17:20:20 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/05 22:19:54 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/07 16:23:48 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,6 @@ void	p_ab(t_list **from_lst, t_list **to_lst, int option)
 {
 	t_list	*tmp_node;
 
-	if ((!from_lst && !(*from_lst))
-		|| !(to_lst && !(*to_lst)))
-		return ;
 	ft_lstadd_front(to_lst, ft_lstnew((*from_lst)->data));
 	tmp_node = (*from_lst);
 	(*from_lst) = (*from_lst)->next;

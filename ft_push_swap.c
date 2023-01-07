@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/06 21:56:05 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/07 16:23:22 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static int	ft_check(int *expected, t_list *stack_a)
 int	main(int argc, char *argv[])
 {
 	t_list	*stack_a;
-	// t_list	*stack_b;
+	t_list	*stack_b;
 	t_list	*tmp_node;
 	int		lis;
 	int		sub_index;
@@ -147,34 +147,43 @@ int	main(int argc, char *argv[])
 	expected = (int *)malloc(max_lis * sizeof(int));
 	if (!expected)
 		return (ft_error(2) ,0);
-	j = 0;
-	while (j < max_lis) 
+	j = max_lis - 1;
+	while (j >= 0) 
 	{
 		expected[j] = in(stack_a, i)->data;
 		in(stack_a, i)->lis = -1;
 		i = in(stack_a, i)->sub_index;
-		j++;
+		j--;
 	}
 //test
 	ft_print_lst(stack_a, 'A');
 //                                  * 2 : Move not LIS to stack B
 
 	tmp_node = stack_a;
-	ft_check(expected, stack_a);
-	printf("%d\n", tmp_node->lis);
-	printf("%d\n", stack_a->data);
-	// while (ft_check(expected, stack_a))
-	// {
-	// 	if (tmp_node->lis != -1)
-	// 	{
-	// 		// printf("%d", tmp_node->data);
-	// 		// while (tmp_node->data != stack_a->data)
-	// 		// {
-				
-	// 		// }
-	// 	}
-	// 	tmp_node = tmp_node->next;
-	// }
+	ft_check(expected, tmp_node);
+	i = 0;
+	while (i < 8)
+	{
+		printf("\n== %d ==", stack_a->lis);
+		if (stack_a->lis != -1)
+		{
+			p_ab(&stack_a, &stack_b, 'a');
+			// printf("\nyes == %d ==", stack_a->lis);
+		}
+		else if (stack_a->lis == -1)
+			rr_ab(&stack_a, &stack_b, 'a');
+		// ft_print_lst(stack_a, 'A');
+		// ft_print_lst(stack_b, 'B');
+		
+		i++;
+	}
+	printf("\n okok %d\n", ft_check(expected, tmp_node));
+	printf("\n %d\n", expected[0]);
+	printf("\n %d\n", expected[1]);
+	printf("\n %d\n", expected[2]);
+	printf("\n %d\n", expected[3]);
+	ft_print_lst(stack_a, 'A');
+	ft_print_lst(stack_b, 'B');
 
 
 
