@@ -190,9 +190,20 @@ int	main(int argc, char *argv[]) // Add function to check
 	{
 		printf("%d == %d > %d\n", min_max_n, in(stack_a, i)->data, target);
 		if (in(stack_a, i)->data > target)
-			min_max_n = min_max_n > in(stack_a, i)->data ? in(stack_a, i)->data : min_max_n;
+			min_max_n = (min_max_n > in(stack_a, i)->data ? in(stack_a, i)->data : min_max_n);
 		i++;
 	}
+	i = 0;
+	while (stack_a->data != min_max_n)
+		rr_ab(&stack_a, &stack_b, 'a');
+	while (stack_b->data != target)
+		rr_ab(&stack_a, &stack_b, 'b');
+	make to push
+//test
+	ft_print_lst(stack_a, 'A');
+	ft_print_lst(stack_b, 'B');
+	
+	
 
 
 
