@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+// /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_push_swap.c                                     :+:      :+:    :+:   */
@@ -53,17 +53,22 @@ void	ft_indexing(t_list *stack_a)
 	}
 }
 
-int	main(int argc, char *argv[])
+int	main(int argc, char *argv[]) // Add function to check
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
-	t_list	*tmp_node;
+	t_list	*tmp_a;
+	t_list	*tmp_b;
 	int		lis;
 	int		sub_index;
 	int		max_lis;
 	int		*expected;
 	int		i;
 	int		j;
+	int		max_n;
+	int		min_n;
+	int		min_max_n;
+	int		target;
 
 	if (argc <= 1) // if there just 1 arg
 		return (write(1, "Error\n", 6), 0);
@@ -78,8 +83,8 @@ int	main(int argc, char *argv[])
 			place with lowest possible number of operations
 */
 // add some info
-	tmp_node = stack_a;
-	ft_indexing(tmp_node);
+	tmp_a = stack_a;
+	ft_indexing(tmp_a);
 //test
 	ft_print_lst(stack_a, 'A');
 //                                  * 1 : Find LIS
@@ -151,10 +156,10 @@ int	main(int argc, char *argv[])
 			p_ab(&stack_a, &stack_b, 'a');
 	}
 //indexing
-	tmp_node = stack_a;
-	ft_indexing(tmp_node);
-	tmp_node = stack_b;
-	ft_indexing(tmp_node);
+	tmp_a = stack_a;
+	ft_indexing(tmp_a);
+	tmp_b = stack_b;
+	ft_indexing(tmp_b);
 //test
 	ft_print_lst(stack_a, 'A');
 	ft_print_lst(stack_b, 'B');
@@ -172,6 +177,35 @@ int	main(int argc, char *argv[])
 
 
 
+//    * Find the right position for the number
+
+	while (in(stack_a, i)->next)
+		i++;
+	min_n = in(stack_a, 0)->data;
+	max_n = in(stack_a, i)->data;
+	min_max_n = INT_MAX;
+	target = stack_b->data;
+	i = 0;
+	while (in(stack_a, i))
+	{
+		printf("%d == %d > %d\n", min_max_n, in(stack_a, i)->data, target);
+		if (in(stack_a, i)->data > target)
+			min_max_n = min_max_n > in(stack_a, i)->data ? in(stack_a, i)->data : min_max_n;
+		i++;
+	}
+
+
+
+
+
+
+
+
+
+	// printf("%p", stack_b);
+	// printf("%d", stack_b->data);
+	// tmp_a = stack_a;
+	// tmp_b = stack_b;
 
 
 

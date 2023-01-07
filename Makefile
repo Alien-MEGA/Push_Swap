@@ -6,7 +6,7 @@
 #    By: reben-ha <reben-ha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/22 16:23:50 by reben-ha          #+#    #+#              #
-#    Updated: 2023/01/07 19:40:19 by reben-ha         ###   ########.fr        #
+#    Updated: 2023/01/07 22:09:56 by reben-ha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,8 +22,8 @@ $(NAME) : $(OBJ)
 	@ar -rc $(NAME) $(OBJ)
 bonus : $(BOBJ)
 	@ar -rc $(NAME) $(BOBJ)
-%.o : %.c push_swap.h
-	@cc -g -Wall -Wextra -Werror -c $< -o $@
+%.o : %.c push_swap.h #-Wall -Wextra -Werror
+	@cc  -c $< -o $@
 clean :
 	@rm -f $(OBJ)
 	@rm -f $(BOBJ)
@@ -37,12 +37,6 @@ app : re
 	@rm -f push_swap.a
 run : app
 	@./push_swap 3 9 6 5 7 4 1 8 2
-sift : app
-	cd ../../push_swap
-	rm -rf *
-	cd ../from\ github/Push_Swap
-	cp * ../../push_swap
-	pwd
 gitpush : 
 	git add .
 	git commit -m "Push-Swap"
