@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/07 17:44:58 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/07 18:04:03 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,22 +37,6 @@ static t_list	*in(t_list *head, int index)
 	return (NULL);
 }
 
-static void	ft_error(int option)
-{
-	if (option == 1)
-	{
-		write(2, "\e[1;31m[ERROR] : Add more argument!\n", 37);
-		write(2 ,"\e[0m        ./a.out . . .\n", 26);
-		write(2 ,"\e[1;32m                ^~~~~\n\e[0m1 warning generated.\n", 54);
-	}
-	if (option == 2)
-	{
-		write(2, "\e[1;31m[ERROR]", 14);
-		write(2, " : Malloc failed to allocate memory\n", 36);
-		write(2 ,"\e[0m1 warning generated.\n", 25);
-	}
-}
-
 int	main(int argc, char *argv[])
 {
 	t_list	*stack_a;
@@ -66,7 +50,7 @@ int	main(int argc, char *argv[])
 	int		j;
 
 	if (argc <= 1) // if there just 1 arg
-		return (ft_error(1), 0);
+		return (write(2, "Error\n", 6), 0);
 // make arg to linked list
 	i = 1;
 	while (i < argc)
@@ -133,7 +117,7 @@ int	main(int argc, char *argv[])
 // move LIS to array
 	expected = (int *)malloc(max_lis * sizeof(int));
 	if (!expected)
-		return (ft_error(2) ,0);
+		return (write(2, "Error\n", 6) ,0);
 	j = max_lis - 1;
 	while (j >= 0) 
 	{
@@ -163,6 +147,7 @@ int	main(int argc, char *argv[])
 	ft_print_lst(stack_a, 'A');
 	ft_print_lst(stack_b, 'B');
 
+//                                  * 2 : Move not LIS to stack B
 
 
 
