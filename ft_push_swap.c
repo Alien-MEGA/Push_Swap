@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/07 18:04:03 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/07 19:25:13 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void ft_print_lst(t_list *head, int option)
 {	
 	while (head != NULL)
 	{
-		printf("\nindex = %d  data = %d  lis = %d  sub_index = %d", head->index, head->data, head->lis, head->sub_index);
+		printf("\nindex = %d  data = %d  lis = %d  sub_index = %d  h_lis = %d", head->index, head->data, head->lis, head->sub_index, head->h_lis);
 		head = head->next;
 	}
 	if (option == 'A')
@@ -37,6 +37,22 @@ static t_list	*in(t_list *head, int index)
 	return (NULL);
 }
 
+void	ft_indexing(t_list *stack_a)
+{
+	int	i;
+
+	i = 0;
+	while (stack_a)
+	{
+		stack_a->index = i;
+		stack_a->sub_index = -1;
+		stack_a->lis = 1;
+		stack_a->h_lis = 0;
+		i++;
+		stack_a = stack_a->next;
+	}
+}
+
 int	main(int argc, char *argv[])
 {
 	t_list	*stack_a;
@@ -50,7 +66,7 @@ int	main(int argc, char *argv[])
 	int		j;
 
 	if (argc <= 1) // if there just 1 arg
-		return (write(2, "Error\n", 6), 0);
+		return (write(1, "Error\n", 6), 0);
 // make arg to linked list
 	i = 1;
 	while (i < argc)
@@ -62,17 +78,8 @@ int	main(int argc, char *argv[])
 			place with lowest possible number of operations
 */
 // add some info
-	i = 0;
 	tmp_node = stack_a;
-	while (tmp_node)
-	{
-		tmp_node->index = i;
-		tmp_node->sub_index = -1;
-		tmp_node->lis = 1;
-		tmp_node->h_lis = 0;
-		i++;
-		tmp_node = tmp_node->next;
-	}
+	ft_indexing(tmp_node);
 //test
 	ft_print_lst(stack_a, 'A');
 //                                  * 1 : Find LIS
@@ -117,7 +124,7 @@ int	main(int argc, char *argv[])
 // move LIS to array
 	expected = (int *)malloc(max_lis * sizeof(int));
 	if (!expected)
-		return (write(2, "Error\n", 6) ,0);
+		return (write(1, "Error\n", 6) ,0);
 	j = max_lis - 1;
 	while (j >= 0) 
 	{
@@ -143,12 +150,25 @@ int	main(int argc, char *argv[])
 		else
 			p_ab(&stack_a, &stack_b, 'a');
 	}
+//indexing
+	tmp_node = stack_a;
+	ft_indexing(tmp_node);
+	tmp_node = stack_b;
+	ft_indexing(tmp_node);
 //test
 	ft_print_lst(stack_a, 'A');
 	ft_print_lst(stack_b, 'B');
 
-//                                  * 2 : Move not LIS to stack B
+// 						* 3 : Find fast way number that can moving to here 
+// 								place with lowest possible number of operations
 
+// Loop :
+//    * Find the right position for the number
+//    * Calcul instraction need to be in there place
+//    	Use index
+//    	Add condition for (len/2) or (len - 1/2)
+//    	Save it in a the node->move
+//    * End this when you calcul this for all node
 
 
 
