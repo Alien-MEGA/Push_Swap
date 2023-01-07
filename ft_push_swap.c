@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/07 16:23:22 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/07 17:43:18 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,20 +53,6 @@ static void	ft_error(int option)
 	}
 }
 
-static int	ft_check(int *expected, t_list *stack_a)
-{
-	int	i;
-
-	i = 0;
-	while (in(stack_a, i))
-	{
-		if (in(stack_a, i)->data != expected[i])
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
 int	main(int argc, char *argv[])
 {
 	t_list	*stack_a;
@@ -99,6 +85,7 @@ int	main(int argc, char *argv[])
 		tmp_node->index = i;
 		tmp_node->sub_index = -1;
 		tmp_node->lis = 1;
+		tmp_node->h_lis = 0;
 		i++;
 		tmp_node = tmp_node->next;
 	}
@@ -160,28 +147,21 @@ int	main(int argc, char *argv[])
 //                                  * 2 : Move not LIS to stack B
 
 	tmp_node = stack_a;
-	ft_check(expected, tmp_node);
+	j = 1;
 	i = 0;
-	while (i < 8)
+	while (stack_a->h_lis != 1)
 	{
-		printf("\n== %d ==", stack_a->lis);
-		if (stack_a->lis != -1)
+		if (stack_a->lis == -1)
 		{
-			p_ab(&stack_a, &stack_b, 'a');
-			// printf("\nyes == %d ==", stack_a->lis);
-		}
-		else if (stack_a->lis == -1)
+			if (j == 1)
+				stack_a->h_lis = 1;
+			j = 0;
 			rr_ab(&stack_a, &stack_b, 'a');
-		// ft_print_lst(stack_a, 'A');
-		// ft_print_lst(stack_b, 'B');
-		
+		}
+		else
+			p_ab(&stack_a, &stack_b, 'a');
 		i++;
 	}
-	printf("\n okok %d\n", ft_check(expected, tmp_node));
-	printf("\n %d\n", expected[0]);
-	printf("\n %d\n", expected[1]);
-	printf("\n %d\n", expected[2]);
-	printf("\n %d\n", expected[3]);
 	ft_print_lst(stack_a, 'A');
 	ft_print_lst(stack_b, 'B');
 

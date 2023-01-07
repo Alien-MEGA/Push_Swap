@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: reben-ha <reben-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:42 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/02 23:47:14 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/07 17:42:41 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_list
 	int				index;
 	int				lis;
 	int				sub_index;
+	int				h_lis;
 	struct s_list	*next;
 }					t_list;
 
