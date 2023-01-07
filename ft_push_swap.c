@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/07 17:43:18 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/07 17:43:55 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,6 +162,7 @@ int	main(int argc, char *argv[])
 			p_ab(&stack_a, &stack_b, 'a');
 		i++;
 	}
+//test
 	ft_print_lst(stack_a, 'A');
 	ft_print_lst(stack_b, 'B');
 
