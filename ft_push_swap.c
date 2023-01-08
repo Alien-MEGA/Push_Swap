@@ -198,8 +198,8 @@ int	main(int argc, char *argv[]) // Add function to check
 		rr_ab(&stack_a, &stack_b, 'a');
 	while (stack_b->data != target)
 		rr_ab(&stack_a, &stack_b, 'b');
-	if ((stack_a->data != min_max_n) && (stack_b->data != target))
-		p_ab(&stack_a, &stack_b, 'b')
+	if ((stack_a->data == min_max_n) && (stack_b->data == target))
+		p_ab(&stack_a, &stack_b, 'a');
 	
 	// make to push
 //test

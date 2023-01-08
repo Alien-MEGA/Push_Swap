@@ -6,12 +6,14 @@
 /*   By: reben-ha <reben-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 17:20:20 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/07 16:23:48 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/08 20:32:11 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+//- `pa` (push A): Take the first element at the top of B and put it at the top of A. Do nothing if B is empty.
+// - `pb` (push B): Take the first element at the top of A and put it at the top of B. Do nothing if A is empty.
 void	p_ab(t_list **from_lst, t_list **to_lst, int option)
 {
 	t_list	*tmp_node;
@@ -26,6 +28,8 @@ void	p_ab(t_list **from_lst, t_list **to_lst, int option)
 		write(1, "pb\n", 3);
 }
 
+// - `sa` (swap A): Swap the first 2 elements at the top of stack A. Do nothing if there is only one or no element.
+// - `sb` (swap B): Swap the first 2 elements at the top of stack B. Do nothing if there is only one or no element.
 void	ss_ab(t_list *head_of_a, t_list *head_of_b, int option)
 {
 	int	tmp;
@@ -59,6 +63,8 @@ void	ss_ab(t_list *head_of_a, t_list *head_of_b, int option)
 	}
 }
 
+// - `ra` (rotate A): Shift all elements of stack A up by 1. The first element becomes the last one.
+// - `rb` (rotate B): Shift all elements of stack B up by 1. The first element becomes the last one.
 void	rr_ab(t_list **head_of_a, t_list **head_of_b, int option)
 {
 	t_list	*tmp_node;
@@ -88,6 +94,8 @@ void	rr_ab(t_list **head_of_a, t_list **head_of_b, int option)
 	}
 }
 
+// - `rra` (reverse rotate A): Shift all elements of stack A down by 1. The last element becomes the first one.
+// - `rrb` (reverse rotate B): Shift all elements of stack b down by 1. The last element becomes the first one.
 void	rrr_ab(t_list **head_of_a, t_list **head_of_b, int option)
 {
 	t_list	*tmp_a;
