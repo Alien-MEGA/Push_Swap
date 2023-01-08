@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   rule_psr.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: reben-ha <reben-ha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 17:20:20 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/08 20:32:11 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/08 20:39:54 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-//- `pa` (push A): Take the first element at the top of B and put it at the top of A. Do nothing if B is empty.
+// - `pa` (push A): Take the first element at the top of B and put it at the top of A. Do nothing if B is empty.
 // - `pb` (push B): Take the first element at the top of A and put it at the top of B. Do nothing if A is empty.
 void	p_ab(t_list **from_lst, t_list **to_lst, int option)
 {

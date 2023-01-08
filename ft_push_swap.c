@@ -1,12 +1,12 @@
-// /* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_push_swap.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: reben-ha <reben-ha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/07 19:25:13 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/08 20:39:31 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,7 +199,7 @@ int	main(int argc, char *argv[]) // Add function to check
 	while (stack_b->data != target)
 		rr_ab(&stack_a, &stack_b, 'b');
 	if ((stack_a->data == min_max_n) && (stack_b->data == target))
-		p_ab(&stack_a, &stack_b, 'a');
+		p_ab(&stack_b, &stack_a, 'a');
 	
 	// make to push
 //test
