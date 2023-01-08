@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/08 20:39:31 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/08 22:47:23 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,7 +171,7 @@ int	main(int argc, char *argv[]) // Add function to check
 //    * Find the right position for the number
 //    * Calcul instraction need to be in there place
 //    	Use index
-//    	Add condition for (len/2) or (len - 1/2)
+//    	Add condition for (len/2)  
 //    	Save it in a the node->move
 //    * End this when you calcul this for all node
 
@@ -179,32 +179,55 @@ int	main(int argc, char *argv[]) // Add function to check
 
 //    * Find the right position for the number
 
-	while (in(stack_a, i)->next)
-		i++;
-	min_n = in(stack_a, 0)->data;
-	max_n = in(stack_a, i)->data;
-	min_max_n = INT_MAX;
-	target = stack_b->data;
-	i = 0;
+	max_n = INT_MIN;
+	min_n = INT_MAX;
 	while (in(stack_a, i))
 	{
-		printf("%d == %d > %d\n", min_max_n, in(stack_a, i)->data, target);
-		if (in(stack_a, i)->data > target)
-			min_max_n = (min_max_n > in(stack_a, i)->data ? in(stack_a, i)->data : min_max_n);
+		max_n = (max_n < in(stack_a, i)->data ? in(stack_a, i)->data : max_n);
+		min_n = (min_n > in(stack_a, i)->data ? in(stack_a, i)->data : min_n);
 		i++;
 	}
-	i = 0;
-	while (stack_a->data != min_max_n)
-		rr_ab(&stack_a, &stack_b, 'a');
-	while (stack_b->data != target)
-		rr_ab(&stack_a, &stack_b, 'b');
-	if ((stack_a->data == min_max_n) && (stack_b->data == target))
-		p_ab(&stack_b, &stack_a, 'a');
+	target = stack_b->data;
+	min_max_n = INT_MAX;
+	if (target > max_n)
+		
 	
-	// make to push
-//test
-	ft_print_lst(stack_a, 'A');
-	ft_print_lst(stack_b, 'B');
+
+
+
+
+	if (in(stack_a, i)->data > target)
+		min_max_n = (min_max_n > in(stack_a, i)->data ? in(stack_a, i)->data : min_max_n);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 	while (stack_a->data != min_max_n)
+// 		rr_ab(&stack_a, &stack_b, 'a');
+// 	while (stack_b->data != target)
+// 		rr_ab(&stack_a, &stack_b, 'b');
+// 	if ((stack_a->data == min_max_n) && (stack_b->data == target))
+// 		p_ab(&stack_b, &stack_a, 'a');
+// 	// make to push
+// //test
+// 	ft_print_lst(stack_a, 'A');
+// 	ft_print_lst(stack_b, 'B');
 
 
 
