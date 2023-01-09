@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/09 21:50:24 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/09 21:57:53 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,7 +181,7 @@ int	main(int argc, char *argv[]) // Add function to check
 
 
 //    * Find the right position for the number
-	in(stack_a, 3)->data = 2; // test
+	in(stack_a, 3)->data = 9; // test
 	max_n = stack_a;
 	min_n = stack_a;
 	min_max_n = stack_a;
@@ -192,9 +192,9 @@ int	main(int argc, char *argv[]) // Add function to check
 		i++;
 	}
 
-	stack_b->data = 8; // test
+	stack_b->data = 7; // test
 	target = stack_b;
-	printf("%d === %d ==== %d ====", target->data, target->instr_s, max_n->index); // test
+	printf("%d === %d ==== %d ====", target->data, target->instr_s, min_max_n->data); // test
 	len_a = ft_lstsize(stack_a);
 	len_b = ft_lstsize(stack_b);
 	if (target->data < min_n->data)
@@ -211,7 +211,7 @@ int	main(int argc, char *argv[]) // Add function to check
 		else if (max_n->index + 1 <= (len_a / 2))
 			target->instr_s += (max_n->index) + 1;
 	}
-	else
+	else // still problem
 	{
 		i = -1;
 		while (in(stack_a, ++i))
@@ -224,7 +224,7 @@ int	main(int argc, char *argv[]) // Add function to check
 			target->instr_s += (min_max_n->index);
 	}
 
-	printf("\n%d === %d ==== %d ====", target->data, target->instr_s, max_n->index); // test
+	printf("\n%d === %d ==== %d ====", target->data, target->instr_s, min_max_n->data); // test
 
 
 
