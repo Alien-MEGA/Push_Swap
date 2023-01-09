@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/09 13:56:50 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/09 17:01:25 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,94 +181,48 @@ int	main(int argc, char *argv[]) // Add function to check
 
 	max_n = INT_MIN;
 	min_n = INT_MAX;
+	min_max_n = INT_MAX;
 	while (in(stack_a, i))
 	{
 		max_n = (max_n < in(stack_a, i)->data ? in(stack_a, i)->data : max_n);
 		min_n = (min_n > in(stack_a, i)->data ? in(stack_a, i)->data : min_n);
 		i++;
 	}
-	// target = stack_b->data;
-	// if (target > max_n)
-	// {
+	target = stack_b->data;
+	if (target > max_n)
+	{
+		if ()
+		{
+			
+		}
+		else
+		{
+			
+		}
 		
-	// }
-	// else if (target < min_n)
-	// {
 		
-	// }
-	// else
-	// {
+	}
+	else if (target < min_n)
+	{
 		
-	// }
+	}
+	else
+	{
+		
+	}
 	
+
+
 	// ((i + 1)/2)
 
 
 
-	
-	// if (target > max_n)
-	// 	while ()
-
-	target = 5;
-	min_max_n = INT_MAX;
-	i = 0;
-	while (in(stack_a, i++))
-	{
+	i = -1;
+	while (in(stack_a, ++i))
 		if (in(stack_a, i)->data > target)
 			min_max_n = (min_max_n > in(stack_a, i)->data ? in(stack_a, i)->data : min_max_n);
-		printf("\n %d  ==== %d", min_max_n, i);
-	}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// 	while (stack_a->data != min_max_n)
-// 		rr_ab(&stack_a, &stack_b, 'a');
-// 	while (stack_b->data != target)
-// 		rr_ab(&stack_a, &stack_b, 'b');
-// 	if ((stack_a->data == min_max_n) && (stack_b->data == target))
-// 		p_ab(&stack_b, &stack_a, 'a');
-// 	// make to push
-// //test
-// 	ft_print_lst(stack_a, 'A');
-// 	ft_print_lst(stack_b, 'B');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	// printf("%p", stack_b);
-	// printf("%d", stack_b->data);
-	// tmp_a = stack_a;
-	// tmp_b = stack_b;
-
-
-
-
+	printf("\n %d  ==== %d", min_max_n, i);
 
 
 

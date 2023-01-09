@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:42 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/08 20:35:43 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/09 16:39:30 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_list
 	int				lis;
 	int				sub_index;
 	int				h_lis;
+	int				instr_s;
 	struct s_list	*next;
 }					t_list;
 
