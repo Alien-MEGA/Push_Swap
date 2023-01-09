@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/09 17:01:25 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/09 21:50:24 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ void ft_print_lst(t_list *head, int option)
 {	
 	while (head != NULL)
 	{
-		printf("\nindex = %d  data = %d  lis = %d  sub_index = %d  h_lis = %d", head->index, head->data, head->lis, head->sub_index, head->h_lis);
+		printf("\nindex = %d  data = %d  lis = %d  sub_index = %d  h_lis = %d  instr_s = %d", head->index, head->data, head->lis, head->sub_index, head->h_lis, head->instr_s);
 		head = head->next;
 	}
 	if (option == 'A')
-		printf("\n-----------------------------------------------\n                      A\n");
+		printf("\n--------------------------------------------------------------------\n				A\n");
 	if (option == 'B')
-		printf("\n-----------------------------------------------\n                      B\n");
+		printf("\n--------------------------------------------------------------------\n				B\n");
 }
 
 
@@ -48,6 +48,7 @@ void	ft_indexing(t_list *stack_a)
 		stack_a->sub_index = -1;
 		stack_a->lis = 1;
 		stack_a->h_lis = 0;
+		stack_a->instr_s = 0;
 		i++;
 		stack_a = stack_a->next;
 	}
@@ -59,16 +60,18 @@ int	main(int argc, char *argv[]) // Add function to check
 	t_list	*stack_b;
 	t_list	*tmp_a;
 	t_list	*tmp_b;
+	t_list	*max_n;
+	t_list	*min_n;
+	t_list	*min_max_n;
+	t_list	*target;
 	int		lis;
 	int		sub_index;
 	int		max_lis;
 	int		*expected;
 	int		i;
 	int		j;
-	int		max_n;
-	int		min_n;
-	int		min_max_n;
-	int		target;
+	int		len_a;
+	int		len_b;
 
 	if (argc <= 1) // if there just 1 arg
 		return (write(1, "Error\n", 6), 0);
@@ -178,51 +181,50 @@ int	main(int argc, char *argv[]) // Add function to check
 
 
 //    * Find the right position for the number
-
-	max_n = INT_MIN;
-	min_n = INT_MAX;
-	min_max_n = INT_MAX;
+	in(stack_a, 3)->data = 2; // test
+	max_n = stack_a;
+	min_n = stack_a;
+	min_max_n = stack_a;
 	while (in(stack_a, i))
 	{
-		max_n = (max_n < in(stack_a, i)->data ? in(stack_a, i)->data : max_n);
-		min_n = (min_n > in(stack_a, i)->data ? in(stack_a, i)->data : min_n);
+		max_n = (max_n->data < in(stack_a, i)->data ? in(stack_a, i) : max_n);
+		min_n = (min_n->data > in(stack_a, i)->data ? in(stack_a, i) : min_n);
 		i++;
 	}
-	target = stack_b->data;
-	if (target > max_n)
+
+	stack_b->data = 8; // test
+	target = stack_b;
+	printf("%d === %d ==== %d ====", target->data, target->instr_s, max_n->index); // test
+	len_a = ft_lstsize(stack_a);
+	len_b = ft_lstsize(stack_b);
+	if (target->data < min_n->data)
 	{
-		if ()
-		{
-			
-		}
-		else
-		{
-			
-		}
-		
-		
+		if (min_n->index + 1 > (len_a / 2))
+			target->instr_s += (len_a - (min_n->index + 1)) + 1;
+		else if (min_n->index + 1 <= (len_a / 2))
+			target->instr_s += (min_n->index);
 	}
-	else if (target < min_n)
+	else if (target->data > max_n->data)
 	{
-		
+		if (max_n->index + 1 > (len_a / 2))
+			target->instr_s += (len_a - (max_n->index)) + 1;
+		else if (max_n->index + 1 <= (len_a / 2))
+			target->instr_s += (max_n->index) + 1;
 	}
 	else
 	{
-		
+		i = -1;
+		while (in(stack_a, ++i))
+			if (in(stack_a, i)->data > target->data)
+				min_max_n = (min_max_n->data > in(stack_a, i)->data ? in(stack_a, i) : min_max_n);
+
+		if (min_max_n->index + 1 > (len_a / 2))
+			target->instr_s += (len_a - (min_max_n->index + 1)) + 1;
+		else if (min_max_n->index + 1 <= (len_a / 2))
+			target->instr_s += (min_max_n->index);
 	}
-	
 
-
-	// ((i + 1)/2)
-
-
-
-	i = -1;
-	while (in(stack_a, ++i))
-		if (in(stack_a, i)->data > target)
-			min_max_n = (min_max_n > in(stack_a, i)->data ? in(stack_a, i)->data : min_max_n);
-
-	printf("\n %d  ==== %d", min_max_n, i);
+	printf("\n%d === %d ==== %d ====", target->data, target->instr_s, max_n->index); // test
 
 
 
@@ -238,6 +240,9 @@ int	main(int argc, char *argv[]) // Add function to check
 
 
 
+
+
+	// printf("\n %d  ==== %d", min_max_n, i);
 
 
 
