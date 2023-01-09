@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/08 22:47:23 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/09 12:51:26 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,20 +187,32 @@ int	main(int argc, char *argv[]) // Add function to check
 		min_n = (min_n > in(stack_a, i)->data ? in(stack_a, i)->data : min_n);
 		i++;
 	}
-	target = stack_b->data;
-	min_max_n = INT_MAX;
-	if (target > max_n)
+	printf("\n%d ==================", (i + 1)/2);
+
+
+
+	// target = stack_b->data;
+	
+	// if (target > max_n)
+	// 	while ()
+
+
+
+
+
+
+
+
+	// min_max_n = INT_MAX;
+	// if (target > max_n)
 		
 	
 
 
 
 
-	if (in(stack_a, i)->data > target)
-		min_max_n = (min_max_n > in(stack_a, i)->data ? in(stack_a, i)->data : min_max_n);
-
-
-
+	// if (in(stack_a, i)->data > target)
+	// 	min_max_n = (min_max_n > in(stack_a, i)->data ? in(stack_a, i)->data : min_max_n);
 
 
 
