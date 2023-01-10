@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/10 13:41:33 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/10 19:00:13 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,28 +92,28 @@ int	main(int argc, char *argv[]) // Add function to check
 	ft_print_lst(stack_a, 'A');
 //                                  * 1 : Find LIS
 // find LIS
-	i = 1;
-	while (in(stack_a, i))
+i = 1;
+while (in(stack_a, i))
+{
+	j = 0;
+	lis = 1;
+	sub_index = -1;
+	while (j < i)
 	{
-		j = 0;
-		lis = 1;
-		sub_index = -1;
-		while (j < i)
+		if (in(stack_a, j)->data < in(stack_a, i)->data)
 		{
-			if (in(stack_a, j)->data < in(stack_a, i)->data)
+			if (lis < (in(stack_a, j)->lis + in(stack_a, i)->lis))
 			{
-				if (lis < (in(stack_a, j)->lis + in(stack_a, i)->lis))
-				{
-					lis = in(stack_a, j)->lis + in(stack_a, i)->lis;
-					sub_index = in(stack_a, j)->index;
-				}
+				lis = in(stack_a, j)->lis + in(stack_a, i)->lis;
+				sub_index = in(stack_a, j)->index;
 			}
-			j++;
 		}
-		in(stack_a, i)->lis = lis;
-		in(stack_a, i)->sub_index = sub_index;
-		i++;
+		j++;
 	}
+	in(stack_a, i)->lis = lis;
+	in(stack_a, i)->sub_index = sub_index;
+	i++;
+}
 //test
 	ft_print_lst(stack_a, 'A');
 // find len of LIS and the node that has max len_lis
@@ -178,23 +178,30 @@ int	main(int argc, char *argv[]) // Add function to check
 //    	Save it in a the node->move
 //    * End this when you calcul this for all node
 
-
-
 //    * Find the right position for the number
+
+// make while 
+//				(in(stack_b, ++j))
+//				tartget = in(stack_b, j)
+//				test // test
+
+j = -1;
+len_a = ft_lstsize(stack_a);
+len_b = ft_lstsize(stack_b);
+while (in(stack_b, ++j))
+{
+	target = in(stack_b, j);
 	max_n = stack_a;
 	min_n = stack_a;
 	min_max_n = ft_lstnew(INT_MAX);
+	i = 0;
 	while (in(stack_a, i))
 	{
 		max_n = (max_n->data < in(stack_a, i)->data ? in(stack_a, i) : max_n);
 		min_n = (min_n->data > in(stack_a, i)->data ? in(stack_a, i) : min_n);
 		i++;
 	}
-	stack_b->data = 5;
-	target = stack_b;
-	len_a = ft_lstsize(stack_a);
-	len_b = ft_lstsize(stack_b);
-	if (target->data > ft_lstlast(stack_a) && target->data < stack_a->data)
+	if (target->data > ft_lstlast(stack_a)->data && target->data < stack_a->data)
 		target->instr_s += 0;
 	else if (target->data < min_n->data)
 	{
@@ -208,27 +215,22 @@ int	main(int argc, char *argv[]) // Add function to check
 		if (max_n->index + 1 <= (len_a / 2))
 			target->instr_s += (max_n->index) + 1;
 		else if (max_n->index + 1 > (len_a / 2))
-			target->instr_s += (len_a - (max_n->index));
+			target->instr_s += (len_a - (max_n->index)) - 1;
 	}
-	else // still problem
+	else
 	{
 		i = -1;
 		while (in(stack_a, ++i)->next)
 			if (target->data > in(stack_a, i)->data && target->data < in(stack_a, (i + 1))->data)
 				min_max_n = in(stack_a, (i + 1));
-
-		printf("\n\n\n%d \n\n", min_max_n->data);
-
 		if (min_max_n->index + 1 <= (len_a / 2))
 			target->instr_s += (min_max_n->index);
 		else if (min_max_n->index + 1 > (len_a / 2))
 			target->instr_s += (len_a - (min_max_n->index + 1)) + 1;
 	}
-
-	printf("\n%d === %d ==== %d ====", target->data, target->instr_s, min_max_n->data); // test
-
-
-
+}
+	ft_print_lst(stack_a, 'A');
+	ft_print_lst(stack_b, 'B');
 
 
 
@@ -236,16 +238,18 @@ int	main(int argc, char *argv[]) // Add function to check
 
 
 
-
-
-
-
-
-
-
-	// printf("\n %d  ==== %d", min_max_n, i);
-
-
+// //test
+// 	target = stack_b;
+// 	max_n = stack_a;
+// 	min_n = stack_a;
+// 	target->data = 666;
+// 	max_n->data = 7777;
+// 	printf("\ntest\n target == %d == %d", target->data, target->instr_s);	// test
+// 	printf("\n stack_b == %d == %d", stack_b->data, stack_b->instr_s);		// test 
+// 	printf("\n max_a == %d == %d", max_n->data, max_n->instr_s);		// test 
+// 	printf("\n min_n == %d == %d", min_n->data, min_n->instr_s);		// test 
+// 	printf("\n stack_a == %d == %d", stack_a->data, stack_a->instr_s);		// test 
+// 	// printf("\n min_max_n == %d == %d", min_max_n->data, min_max_n->instr_s);		// test 
 
 	// ft_print_lst(head_of_a, 'A');
 	// ft_print_lst(head_of_b, 'B');
