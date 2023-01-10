@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/10 19:00:13 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/10 21:03:08 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,28 +92,28 @@ int	main(int argc, char *argv[]) // Add function to check
 	ft_print_lst(stack_a, 'A');
 //                                  * 1 : Find LIS
 // find LIS
-i = 1;
-while (in(stack_a, i))
-{
-	j = 0;
-	lis = 1;
-	sub_index = -1;
-	while (j < i)
+	i = 1;
+	while (in(stack_a, i))
 	{
-		if (in(stack_a, j)->data < in(stack_a, i)->data)
+		j = 0;
+		lis = 1;
+		sub_index = -1;
+		while (j < i)
 		{
-			if (lis < (in(stack_a, j)->lis + in(stack_a, i)->lis))
+			if (in(stack_a, j)->data < in(stack_a, i)->data)
 			{
-				lis = in(stack_a, j)->lis + in(stack_a, i)->lis;
-				sub_index = in(stack_a, j)->index;
+				if (lis < (in(stack_a, j)->lis + in(stack_a, i)->lis))
+				{
+					lis = in(stack_a, j)->lis + in(stack_a, i)->lis;
+					sub_index = in(stack_a, j)->index;
+				}
 			}
+			j++;
 		}
-		j++;
+		in(stack_a, i)->lis = lis;
+		in(stack_a, i)->sub_index = sub_index;
+		i++;
 	}
-	in(stack_a, i)->lis = lis;
-	in(stack_a, i)->sub_index = sub_index;
-	i++;
-}
 //test
 	ft_print_lst(stack_a, 'A');
 // find len of LIS and the node that has max len_lis
@@ -185,50 +185,60 @@ while (in(stack_a, i))
 //				tartget = in(stack_b, j)
 //				test // test
 
-j = -1;
-len_a = ft_lstsize(stack_a);
-len_b = ft_lstsize(stack_b);
-while (in(stack_b, ++j))
-{
-	target = in(stack_b, j);
-	max_n = stack_a;
-	min_n = stack_a;
-	min_max_n = ft_lstnew(INT_MAX);
-	i = 0;
-	while (in(stack_a, i))
+	j = -1;
+	len_a = ft_lstsize(stack_a);
+	len_b = ft_lstsize(stack_b);
+	while (in(stack_b, ++j))
 	{
-		max_n = (max_n->data < in(stack_a, i)->data ? in(stack_a, i) : max_n);
-		min_n = (min_n->data > in(stack_a, i)->data ? in(stack_a, i) : min_n);
-		i++;
+		target = in(stack_b, j);
+		max_n = stack_a;
+		min_n = stack_a;
+		min_max_n = ft_lstnew(INT_MAX);
+		i = 0;
+		while (in(stack_a, i))
+		{
+			max_n = (max_n->data < in(stack_a, i)->data ? in(stack_a, i) : max_n);
+			min_n = (min_n->data > in(stack_a, i)->data ? in(stack_a, i) : min_n);
+			i++;
+		}
+// instraction that need the position to be in the first in top
+		if (target->data > ft_lstlast(stack_a)->data && target->data < stack_a->data)
+			target->instr_s += 0;
+		else if (target->data < min_n->data)
+		{
+			if (min_n->index + 1 <= (len_a / 2))
+				target->instr_s += (min_n->index);
+			else if (min_n->index + 1 > (len_a / 2))
+				target->instr_s += (len_a - (min_n->index + 1)) + 1;
+		}
+		else if (target->data > max_n->data)
+		{
+			if (max_n->index + 1 <= (len_a / 2))
+				target->instr_s += (max_n->index) + 1;
+			else if (max_n->index + 1 > (len_a / 2))
+				target->instr_s += (len_a - (max_n->index)) - 1;
+		}
+		else
+		{
+			i = -1;
+			while (in(stack_a, ++i)->next)
+				if (target->data > in(stack_a, i)->data && target->data < in(stack_a, (i + 1))->data)
+					min_max_n = in(stack_a, (i + 1));
+			if (min_max_n->index + 1 <= (len_a / 2))
+				target->instr_s += (min_max_n->index);
+			else if (min_max_n->index + 1 > (len_a / 2))
+				target->instr_s += (len_a - (min_max_n->index + 1)) + 1;
+		}
+// instraction that need the target to be in the first in top
+		if (target->index + 1 <= (len_b / 2))
+		{
+			target->instr_s += target->index;
+		}
+		else if (target->index + 1 > (len_b / 2))
+		{
+			target->instr_s += (len_b - target->index) + 1;
+		}
 	}
-	if (target->data > ft_lstlast(stack_a)->data && target->data < stack_a->data)
-		target->instr_s += 0;
-	else if (target->data < min_n->data)
-	{
-		if (min_n->index + 1 <= (len_a / 2))
-			target->instr_s += (min_n->index);
-		else if (min_n->index + 1 > (len_a / 2))
-			target->instr_s += (len_a - (min_n->index + 1)) + 1;
-	}
-	else if (target->data > max_n->data)
-	{
-		if (max_n->index + 1 <= (len_a / 2))
-			target->instr_s += (max_n->index) + 1;
-		else if (max_n->index + 1 > (len_a / 2))
-			target->instr_s += (len_a - (max_n->index)) - 1;
-	}
-	else
-	{
-		i = -1;
-		while (in(stack_a, ++i)->next)
-			if (target->data > in(stack_a, i)->data && target->data < in(stack_a, (i + 1))->data)
-				min_max_n = in(stack_a, (i + 1));
-		if (min_max_n->index + 1 <= (len_a / 2))
-			target->instr_s += (min_max_n->index);
-		else if (min_max_n->index + 1 > (len_a / 2))
-			target->instr_s += (len_a - (min_max_n->index + 1)) + 1;
-	}
-}
 	ft_print_lst(stack_a, 'A');
 	ft_print_lst(stack_b, 'B');
 
