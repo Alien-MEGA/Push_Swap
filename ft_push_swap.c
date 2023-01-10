@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/10 13:05:39 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/10 13:31:29 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	ft_indexing(t_list *stack_a)
 		stack_a->sub_index = -1;
 		stack_a->lis = 1;
 		stack_a->h_lis = 0;
-		stack_a->instr_s = 0;
+		stack_a->instr_s = 1;
 		i++;
 		stack_a = stack_a->next;
 	}
@@ -181,23 +181,19 @@ int	main(int argc, char *argv[]) // Add function to check
 
 
 //    * Find the right position for the number
-	in(stack_a, 3)->data = 9; // test
 	max_n = stack_a;
 	min_n = stack_a;
-	min_max_n = stack_a;
+	min_max_n = ft_lstnew(INT_MAX);
 	while (in(stack_a, i))
 	{
 		max_n = (max_n->data < in(stack_a, i)->data ? in(stack_a, i) : max_n);
 		min_n = (min_n->data > in(stack_a, i)->data ? in(stack_a, i) : min_n);
 		i++;
 	}
-
-	stack_b->data = 7; // test
+	stack_b->data = 5;
 	target = stack_b;
-	printf("%d === %d ==== %d ====", target->data, target->instr_s, min_max_n->data); // test
 	len_a = ft_lstsize(stack_a);
 	len_b = ft_lstsize(stack_b);
-
 	if (target->data < min_n->data)
 	{
 		if (min_n->index + 1 <= (len_a / 2))
@@ -215,9 +211,10 @@ int	main(int argc, char *argv[]) // Add function to check
 	else // still problem
 	{
 		i = -1;
-		while (in(stack_a, ++i))
-			if (in(stack_a, i)->data > target->data)
-				min_max_n = (min_max_n->data > in(stack_a, i)->data ? in(stack_a, i) : min_max_n);
+		while (in(stack_a, ++i)->next)
+			if (target->data > in(stack_a, i)->data && target->data < in(stack_a, (i + 1))->data)
+				min_max_n = in(stack_a, (i + 1));
+		printf("\n\n\n%d \n\n", min_max_n->data);
 
 		if (min_max_n->index + 1 <= (len_a / 2))
 			target->instr_s += (min_max_n->index);
