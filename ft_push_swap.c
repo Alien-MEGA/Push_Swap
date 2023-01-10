@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/10 13:31:29 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/10 13:41:33 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,7 +194,9 @@ int	main(int argc, char *argv[]) // Add function to check
 	target = stack_b;
 	len_a = ft_lstsize(stack_a);
 	len_b = ft_lstsize(stack_b);
-	if (target->data < min_n->data)
+	if (target->data > ft_lstlast(stack_a) && target->data < stack_a->data)
+		target->instr_s += 0;
+	else if (target->data < min_n->data)
 	{
 		if (min_n->index + 1 <= (len_a / 2))
 			target->instr_s += (min_n->index);
@@ -214,6 +216,7 @@ int	main(int argc, char *argv[]) // Add function to check
 		while (in(stack_a, ++i)->next)
 			if (target->data > in(stack_a, i)->data && target->data < in(stack_a, (i + 1))->data)
 				min_max_n = in(stack_a, (i + 1));
+
 		printf("\n\n\n%d \n\n", min_max_n->data);
 
 		if (min_max_n->index + 1 <= (len_a / 2))
