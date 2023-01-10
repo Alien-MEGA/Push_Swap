@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/09 21:57:53 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/10 13:05:39 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,19 +197,20 @@ int	main(int argc, char *argv[]) // Add function to check
 	printf("%d === %d ==== %d ====", target->data, target->instr_s, min_max_n->data); // test
 	len_a = ft_lstsize(stack_a);
 	len_b = ft_lstsize(stack_b);
+
 	if (target->data < min_n->data)
 	{
-		if (min_n->index + 1 > (len_a / 2))
-			target->instr_s += (len_a - (min_n->index + 1)) + 1;
-		else if (min_n->index + 1 <= (len_a / 2))
+		if (min_n->index + 1 <= (len_a / 2))
 			target->instr_s += (min_n->index);
+		else if (min_n->index + 1 > (len_a / 2))
+			target->instr_s += (len_a - (min_n->index + 1)) + 1;
 	}
 	else if (target->data > max_n->data)
 	{
-		if (max_n->index + 1 > (len_a / 2))
-			target->instr_s += (len_a - (max_n->index)) + 1;
-		else if (max_n->index + 1 <= (len_a / 2))
+		if (max_n->index + 1 <= (len_a / 2))
 			target->instr_s += (max_n->index) + 1;
+		else if (max_n->index + 1 > (len_a / 2))
+			target->instr_s += (len_a - (max_n->index));
 	}
 	else // still problem
 	{
@@ -218,10 +219,10 @@ int	main(int argc, char *argv[]) // Add function to check
 			if (in(stack_a, i)->data > target->data)
 				min_max_n = (min_max_n->data > in(stack_a, i)->data ? in(stack_a, i) : min_max_n);
 
-		if (min_max_n->index + 1 > (len_a / 2))
-			target->instr_s += (len_a - (min_max_n->index + 1)) + 1;
-		else if (min_max_n->index + 1 <= (len_a / 2))
+		if (min_max_n->index + 1 <= (len_a / 2))
 			target->instr_s += (min_max_n->index);
+		else if (min_max_n->index + 1 > (len_a / 2))
+			target->instr_s += (len_a - (min_max_n->index + 1)) + 1;
 	}
 
 	printf("\n%d === %d ==== %d ====", target->data, target->instr_s, min_max_n->data); // test
