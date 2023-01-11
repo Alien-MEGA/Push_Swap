@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/11 15:42:48 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/11 16:40:36 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,13 +178,6 @@ int	main(int argc, char *argv[]) // Add function to check
 //    	Save it in a the node->move
 //    * End this when you calcul this for all node
 
-//    * Find the right position for the number
-
-// make while 
-//				(in(stack_b, ++j))
-//				tartget = in(stack_b, j)
-//				test // test
-
 	j = -1;
 	len_a = ft_lstsize(stack_a);
 	len_b = ft_lstsize(stack_b);
@@ -201,7 +194,7 @@ int	main(int argc, char *argv[]) // Add function to check
 			min_n = (min_n->data > in(stack_a, i)->data ? in(stack_a, i) : min_n);
 			i++;
 		}
-// instraction that need the position to be in the first in top
+		// instraction that need the position to be in the first in top
 		if (target->data > ft_lstlast(stack_a)->data && target->data < stack_a->data)
 			target->instr_s += 0;
 		else if (target->data < min_n->data)
@@ -229,7 +222,7 @@ int	main(int argc, char *argv[]) // Add function to check
 			else if (min_max_n->index > (len_a / 2))
 				target->instr_s += (len_a - (min_max_n->index + 1)) + 1;
 		}
-// instraction that need the target to be in the first in top
+		// instraction that need the target to be in the first in top
 		if (target->index <= (len_b / 2))
 		{
 			target->instr_s += target->index;
@@ -239,8 +232,21 @@ int	main(int argc, char *argv[]) // Add function to check
 			target->instr_s += (len_b - target->index);// khas 1 wa9ila
 		}
 	}
+//test
 	ft_print_lst(stack_a, 'A');
 	ft_print_lst(stack_b, 'B');
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
