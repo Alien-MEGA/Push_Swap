@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/10 21:03:08 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/11 15:42:48 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,16 +206,16 @@ int	main(int argc, char *argv[]) // Add function to check
 			target->instr_s += 0;
 		else if (target->data < min_n->data)
 		{
-			if (min_n->index + 1 <= (len_a / 2))
+			if (min_n->index <= (len_a / 2))
 				target->instr_s += (min_n->index);
-			else if (min_n->index + 1 > (len_a / 2))
+			else if (min_n->index > (len_a / 2))
 				target->instr_s += (len_a - (min_n->index + 1)) + 1;
 		}
 		else if (target->data > max_n->data)
 		{
-			if (max_n->index + 1 <= (len_a / 2))
+			if (max_n->index <= (len_a / 2))
 				target->instr_s += (max_n->index) + 1;
-			else if (max_n->index + 1 > (len_a / 2))
+			else if (max_n->index > (len_a / 2))
 				target->instr_s += (len_a - (max_n->index)) - 1;
 		}
 		else
@@ -224,19 +224,19 @@ int	main(int argc, char *argv[]) // Add function to check
 			while (in(stack_a, ++i)->next)
 				if (target->data > in(stack_a, i)->data && target->data < in(stack_a, (i + 1))->data)
 					min_max_n = in(stack_a, (i + 1));
-			if (min_max_n->index + 1 <= (len_a / 2))
+			if (min_max_n->index <= (len_a / 2))
 				target->instr_s += (min_max_n->index);
-			else if (min_max_n->index + 1 > (len_a / 2))
+			else if (min_max_n->index > (len_a / 2))
 				target->instr_s += (len_a - (min_max_n->index + 1)) + 1;
 		}
 // instraction that need the target to be in the first in top
-		if (target->index + 1 <= (len_b / 2))
+		if (target->index <= (len_b / 2))
 		{
 			target->instr_s += target->index;
 		}
-		else if (target->index + 1 > (len_b / 2))
+		else if (target->index > (len_b / 2))
 		{
-			target->instr_s += (len_b - target->index) + 1;
+			target->instr_s += (len_b - target->index);// khas 1 wa9ila
 		}
 	}
 	ft_print_lst(stack_a, 'A');
