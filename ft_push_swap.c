@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/11 16:40:36 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/11 22:57:24 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,24 +54,91 @@ void	ft_indexing(t_list *stack_a)
 	}
 }
 
+void	ft_instra(t_list **stack_a, t_list **stack_b)
+{
+	t_list	*max_n;
+	t_list	*min_n;
+	t_list	*min_max_n;
+	t_list	*target;
+	int		i;
+	int		j;
+	int		len_a;
+	int		len_b;
+
+	j = -1;
+	len_a = ft_lstsize((*stack_a));
+	len_b = ft_lstsize((*stack_b));
+	while (in((*stack_b), ++j))
+	{
+		target = in((*stack_b), j);
+		max_n = (*stack_a);
+		min_n = (*stack_a);
+		min_max_n = ft_lstnew(INT_MAX);
+		i = 0;
+		while (in((*stack_a), i))
+		{
+			max_n = (max_n->data < in((*stack_a), i)->data ? in((*stack_a), i) : max_n);
+			min_n = (min_n->data > in((*stack_a), i)->data ? in((*stack_a), i) : min_n);
+			i++;
+		}
+		// instraction that need the position to be in the first in top
+		if (target->data > ft_lstlast((*stack_a))->data && target->data < (*stack_a)->data)
+		{
+			target->instr_s += 0;
+			target->sub_index = 0;
+		}
+		else if (target->data < min_n->data)
+		{
+			if (min_n->index <= (len_a / 2))
+				target->instr_s += (min_n->index);
+			else if (min_n->index > (len_a / 2))
+				target->instr_s += (len_a - (min_n->index + 1)) + 1;
+			target->sub_index = min_n->index;
+		}
+		else if (target->data > max_n->data)
+		{
+			if (max_n->index <= (len_a / 2))
+				target->instr_s += (max_n->index) + 1;
+			else if (max_n->index > (len_a / 2))
+				target->instr_s += (len_a - (max_n->index)) - 1;
+			target->sub_index = -5;
+		}
+		else
+		{
+			i = -1;
+			while (in((*stack_a), ++i)->next)
+				if (target->data > in((*stack_a), i)->data && target->data < in((*stack_a), (i + 1))->data)
+					min_max_n = in((*stack_a), (i + 1));
+			if (min_max_n->index <= (len_a / 2))
+				target->instr_s += (min_max_n->index);
+			else if (min_max_n->index > (len_a / 2))
+				target->instr_s += (len_a - (min_max_n->index + 1)) + 1;
+			target->sub_index = min_max_n->index;
+		}
+		// instraction that need the target to be in the first in top
+		if (target->index <= (len_b / 2))
+		{
+			target->instr_s += target->index;
+		}
+		else if (target->index > (len_b / 2))
+		{
+			target->instr_s += (len_b - target->index);
+		}
+	}
+}
+
 int	main(int argc, char *argv[]) // Add function to check
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
 	t_list	*tmp_a;
 	t_list	*tmp_b;
-	t_list	*max_n;
-	t_list	*min_n;
-	t_list	*min_max_n;
-	t_list	*target;
 	int		lis;
 	int		sub_index;
 	int		max_lis;
 	int		*expected;
 	int		i;
 	int		j;
-	int		len_a;
-	int		len_b;
 
 	if (argc <= 1) // if there just 1 arg
 		return (write(1, "Error\n", 6), 0);
@@ -169,69 +236,57 @@ int	main(int argc, char *argv[]) // Add function to check
 
 // 						* 3 : Find fast way number that can moving to here 
 // 								place with lowest possible number of operations
+	t_list	*target;
+	t_list	*position;
+	int		len_a;
+	int		len_b;
 
-// Loop :
-//    * Find the right position for the number
-//    * Calcul instraction need to be in there place
-//    	Use index
-//    	Add condition for (len/2)  
-//    	Save it in a the node->move
-//    * End this when you calcul this for all node
 
-	j = -1;
-	len_a = ft_lstsize(stack_a);
-	len_b = ft_lstsize(stack_b);
-	while (in(stack_b, ++j))
+	while (stack_b)
 	{
-		target = in(stack_b, j);
-		max_n = stack_a;
-		min_n = stack_a;
-		min_max_n = ft_lstnew(INT_MAX);
-		i = 0;
-		while (in(stack_a, i))
-		{
-			max_n = (max_n->data < in(stack_a, i)->data ? in(stack_a, i) : max_n);
-			min_n = (min_n->data > in(stack_a, i)->data ? in(stack_a, i) : min_n);
-			i++;
-		}
-		// instraction that need the position to be in the first in top
-		if (target->data > ft_lstlast(stack_a)->data && target->data < stack_a->data)
-			target->instr_s += 0;
-		else if (target->data < min_n->data)
-		{
-			if (min_n->index <= (len_a / 2))
-				target->instr_s += (min_n->index);
-			else if (min_n->index > (len_a / 2))
-				target->instr_s += (len_a - (min_n->index + 1)) + 1;
-		}
-		else if (target->data > max_n->data)
-		{
-			if (max_n->index <= (len_a / 2))
-				target->instr_s += (max_n->index) + 1;
-			else if (max_n->index > (len_a / 2))
-				target->instr_s += (len_a - (max_n->index)) - 1;
-		}
-		else
-		{
-			i = -1;
-			while (in(stack_a, ++i)->next)
-				if (target->data > in(stack_a, i)->data && target->data < in(stack_a, (i + 1))->data)
-					min_max_n = in(stack_a, (i + 1));
-			if (min_max_n->index <= (len_a / 2))
-				target->instr_s += (min_max_n->index);
-			else if (min_max_n->index > (len_a / 2))
-				target->instr_s += (len_a - (min_max_n->index + 1)) + 1;
-		}
-		// instraction that need the target to be in the first in top
-		if (target->index <= (len_b / 2))
-		{
-			target->instr_s += target->index;
-		}
-		else if (target->index > (len_b / 2))
-		{
-			target->instr_s += (len_b - target->index);// khas 1 wa9ila
-		}
+		printf("\n== %d\v == %d\n", target->data, target->instr_s);
+		ft_indexing(stack_a);
+		ft_indexing(stack_b);
+		ft_instra(&stack_a, &stack_b);
+		target = stack_a;
+		position = in(stack_a, (target->sub_index));
+		len_a = ft_lstsize(stack_a);
+		len_b = ft_lstsize(stack_b);
+		j = -1;
+		while (in(stack_b, ++j))
+			target = target->instr_s > in(stack_b, j)->instr_s ? in(stack_b, j) : target;
+
+		if ((target->index <= (len_b / 2)) && (position->index <= (len_a / 2)))
+			while ((stack_b->data != target->data) && (stack_a->data != position->data))
+				rr_ab(&stack_a, &stack_b, 'X');
+		else if ((target->index > (len_a / 2)) && (position->index > (len_a / 2)))
+			while ((stack_b->data != target->data) && (stack_a->data != position->data))
+				rrr_ab(&stack_a, &stack_b, 'X');
+
+		if ((target->index <= (len_b / 2)))
+			while (stack_b->data != target->data)
+				rr_ab(&stack_a, &stack_b, 'b');
+		else if ((target->index > (len_a / 2)))
+			while (stack_b->data != target->data)
+				rrr_ab(&stack_a, &stack_b, 'b');
+		if ((position->index <= (len_a / 2)))
+			while (stack_a->data != position->data)
+				rr_ab(&stack_a, &stack_b, 'a');
+		else if ((position->index > (len_a / 2)))
+			while (stack_a->data != position->data)
+				rrr_ab(&stack_a, &stack_b, 'a');
+
+		p_ab(&stack_a, &stack_b, 'a');
 	}
+
+
+
+
+
+
+
+	// ft_instra(&stack_a, &stack_b);
+
 //test
 	ft_print_lst(stack_a, 'A');
 	ft_print_lst(stack_b, 'B');
@@ -247,25 +302,6 @@ int	main(int argc, char *argv[]) // Add function to check
 
 
 
-
-
-
-
-
-
-
-// //test
-// 	target = stack_b;
-// 	max_n = stack_a;
-// 	min_n = stack_a;
-// 	target->data = 666;
-// 	max_n->data = 7777;
-// 	printf("\ntest\n target == %d == %d", target->data, target->instr_s);	// test
-// 	printf("\n stack_b == %d == %d", stack_b->data, stack_b->instr_s);		// test 
-// 	printf("\n max_a == %d == %d", max_n->data, max_n->instr_s);		// test 
-// 	printf("\n min_n == %d == %d", min_n->data, min_n->instr_s);		// test 
-// 	printf("\n stack_a == %d == %d", stack_a->data, stack_a->instr_s);		// test 
-// 	// printf("\n min_max_n == %d == %d", min_max_n->data, min_max_n->instr_s);		// test 
 
 	// ft_print_lst(head_of_a, 'A');
 	// ft_print_lst(head_of_b, 'B');
