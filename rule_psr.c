@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 17:20:20 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/09 16:48:41 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/12 15:08:32 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	ss_ab(t_list *head_of_a, t_list *head_of_b, int option)
 	{
 		if (option == 'a' || option == 'X')
 		{
-			if ((!head_of_a) && option == 'a')
+			if ((!head_of_a))
 				return ;
 			tmp = head_of_a->data;
 			head_of_a->data = head_of_a->next->data;
@@ -50,7 +50,7 @@ void	ss_ab(t_list *head_of_a, t_list *head_of_b, int option)
 		}
 		if (option == 'b' || option == 'X')
 		{
-			if ((!head_of_b) && option == 'b')
+			if ((!head_of_b))
 				return ;
 			tmp = head_of_b->data;
 			head_of_b->data = head_of_b->next->data;

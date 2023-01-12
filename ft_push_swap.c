@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/11 22:57:24 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/12 20:40:33 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,8 @@ void	ft_instra(t_list **stack_a, t_list **stack_b)
 				target->instr_s += (max_n->index) + 1;
 			else if (max_n->index > (len_a / 2))
 				target->instr_s += (len_a - (max_n->index)) - 1;
-			target->sub_index = -5;
+			target->sub_index = (-1) * (max_n->index);
+			printf("\n\n\n\n+ %d + %d\n\n\n", max_n->index, max_n->data);
 		}
 		else
 		{
@@ -244,39 +245,52 @@ int	main(int argc, char *argv[]) // Add function to check
 
 	while (stack_b)
 	{
-		printf("\n== %d\v == %d\n", target->data, target->instr_s);
 		ft_indexing(stack_a);
 		ft_indexing(stack_b);
 		ft_instra(&stack_a, &stack_b);
-		target = stack_a;
-		position = in(stack_a, (target->sub_index));
+		//test
+		ft_print_lst(stack_b, 'B');
+		// 
+		target = stack_b;
 		len_a = ft_lstsize(stack_a);
 		len_b = ft_lstsize(stack_b);
 		j = -1;
 		while (in(stack_b, ++j))
 			target = target->instr_s > in(stack_b, j)->instr_s ? in(stack_b, j) : target;
+		position = in(stack_a, (target->sub_index));
+		ft_print_lst(stack_a, 'A');
+		
 
+// seg fault ?? 
+// and handle case (if the target is big than max number in stack a)
+
+
+		printf("\ntarget = %p\v position = %p\v stack_a = %p\v stack_b = %p\v\nStart :{ \n", target, position, stack_a, stack_b);
 		if ((target->index <= (len_b / 2)) && (position->index <= (len_a / 2)))
-			while ((stack_b->data != target->data) && (stack_a->data != position->data))
+			while (!(stack_b->data == target->data) && !(stack_a->data == position->data))
 				rr_ab(&stack_a, &stack_b, 'X');
-		else if ((target->index > (len_a / 2)) && (position->index > (len_a / 2)))
-			while ((stack_b->data != target->data) && (stack_a->data != position->data))
+		else if ((target->index > (len_b / 2)) && (position->index > (len_a / 2)))
+			while (!(stack_b->data == target->data) && !(stack_a->data == position->data))
 				rrr_ab(&stack_a, &stack_b, 'X');
-
 		if ((target->index <= (len_b / 2)))
-			while (stack_b->data != target->data)
+			while (!(stack_b->data == target->data))
 				rr_ab(&stack_a, &stack_b, 'b');
-		else if ((target->index > (len_a / 2)))
-			while (stack_b->data != target->data)
+		else if ((target->index > (len_b / 2)))
+			while (!(stack_b->data == target->data))
 				rrr_ab(&stack_a, &stack_b, 'b');
 		if ((position->index <= (len_a / 2)))
-			while (stack_a->data != position->data)
+			while (!(stack_a->data == position->data))
 				rr_ab(&stack_a, &stack_b, 'a');
 		else if ((position->index > (len_a / 2)))
-			while (stack_a->data != position->data)
+			while (!(stack_a->data == position->data))
 				rrr_ab(&stack_a, &stack_b, 'a');
 
-		p_ab(&stack_a, &stack_b, 'a');
+
+		p_ab(&stack_b, &stack_a, 'a');
+
+
+
+		printf("\n} End\n");
 	}
 
 
@@ -284,10 +298,11 @@ int	main(int argc, char *argv[]) // Add function to check
 
 
 
+				// printf("\n%d === %d", stack_a->data, position->data);
 
 	// ft_instra(&stack_a, &stack_b);
 
-//test
+// //test
 	ft_print_lst(stack_a, 'A');
 	ft_print_lst(stack_b, 'B');
 
