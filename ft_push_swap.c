@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/13 15:19:26 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/13 16:20:51 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -316,7 +316,7 @@ int	main(int argc, char *argv[]) // Add function to check
 	else if (target->index > (len_a / 2))
 		while (!(stack_a->h_lis == 1))
 			rrr_ab(&stack_a, &stack_b, 'a');
-	
+
 
 
 
