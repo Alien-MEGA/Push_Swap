@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/12 20:40:33 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/13 12:19:05 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -249,6 +249,7 @@ int	main(int argc, char *argv[]) // Add function to check
 		ft_indexing(stack_b);
 		ft_instra(&stack_a, &stack_b);
 		//test
+		ft_print_lst(stack_a, 'A');
 		ft_print_lst(stack_b, 'B');
 		// 
 		target = stack_b;
@@ -258,7 +259,6 @@ int	main(int argc, char *argv[]) // Add function to check
 		while (in(stack_b, ++j))
 			target = target->instr_s > in(stack_b, j)->instr_s ? in(stack_b, j) : target;
 		position = in(stack_a, (target->sub_index));
-		ft_print_lst(stack_a, 'A');
 		
 
 // seg fault ?? 
