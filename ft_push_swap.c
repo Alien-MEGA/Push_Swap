@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/13 17:18:30 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/13 18:04:28 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void ft_print_lst(t_list *head, int option) // delete this
 	if (option == 'B')
 		printf("\n--------------------------------------------------------------------\n				B\n");
 }
-
 
 static t_list	*in(t_list *head, int index)
 {
@@ -147,7 +146,7 @@ int	main(int argc, char *argv[]) // Add function to check
 	int		len_b;
 
 	if (argc <= 1)
-		return (write(2, "Error\n", 6), 0);
+		return (0);
 	i = 1;
 	while (i < argc)
 		ft_lstadd_back(&stack_a, (ft_lstnew(ft_atoi(argv[i++]))));

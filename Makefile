@@ -6,7 +6,7 @@
 #    By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/22 16:23:50 by reben-ha          #+#    #+#              #
-#    Updated: 2023/01/13 17:12:41 by reben-ha         ###   ########.fr        #
+#    Updated: 2023/01/13 18:03:07 by reben-ha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SRC = ft_linked_list.c ft_atoi.c ft_push_swap.c rule_psr.c
 OBJ = ft_linked_list.o ft_atoi.o ft_push_swap.o rule_psr.o
 
 all : $(NAME)
+	@gcc push_swap.a -o push_swap
 
 $(NAME) : $(OBJ)
 	@ar -rc $(NAME) $(OBJ)
