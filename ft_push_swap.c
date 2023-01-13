@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/13 12:19:05 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/13 15:19:26 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void ft_print_lst(t_list *head, int option)
 
 static t_list	*in(t_list *head, int index)
 {
+	if (index < 0)
+		index = (-1) * index;
 	while (head)
 	{
 		if (head->index == index)
@@ -285,14 +287,36 @@ int	main(int argc, char *argv[]) // Add function to check
 			while (!(stack_a->data == position->data))
 				rrr_ab(&stack_a, &stack_b, 'a');
 
-
 		p_ab(&stack_b, &stack_a, 'a');
-
-
+		
+		if (target->sub_index < 0)
+			ss_ab(stack_a, stack_b, 'a');
+			
+		
 
 		printf("\n} End\n");
 	}
 
+	target = stack_a;
+	i = -1;
+	while (in(stack_a, ++i))
+	{
+		if (target->data > in(stack_a, i)->data)
+			target = in(stack_a, i);
+	}
+	target->h_lis = 1;
+	printf("\n = %d\n", target->data);
+
+	
+	len_a = ft_lstsize(stack_a);
+
+	if (target->index <= (len_a / 2))
+		while (!(stack_a->h_lis == 1))
+			rr_ab(&stack_a, &stack_b, 'a');
+	else if (target->index > (len_a / 2))
+		while (!(stack_a->h_lis == 1))
+			rrr_ab(&stack_a, &stack_b, 'a');
+	
 
 
 
