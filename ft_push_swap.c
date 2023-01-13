@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/13 18:04:28 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/13 22:55:03 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -224,6 +224,7 @@ int	main(int argc, char *argv[]) // Add function to check
 		while (in(stack_b, ++j))
 			target = target->instr_s > in(stack_b, j)->instr_s ? in(stack_b, j) : target;
 		position = in(stack_a, (target->sub_index));
+
 		if ((target->index <= (len_b / 2)) && (position->index <= (len_a / 2)))
 			while (!(stack_b->data == target->data) && !(stack_a->data == position->data))
 				rr_ab(&stack_a, &stack_b, 'X');
@@ -236,16 +237,59 @@ int	main(int argc, char *argv[]) // Add function to check
 		else if ((target->index > (len_b / 2)))
 			while (!(stack_b->data == target->data))
 				rrr_ab(&stack_a, &stack_b, 'b');
+				
 		if ((position->index <= (len_a / 2)))
 			while (!(stack_a->data == position->data))
 				rr_ab(&stack_a, &stack_b, 'a');
+				
 		else if ((position->index > (len_a / 2)))
 			while (!(stack_a->data == position->data))
+			{
+				if ((!(ft_lstlast(stack_a)->data == position->data) && target->data > position->data))
+					break;
 				rrr_ab(&stack_a, &stack_b, 'a');
+			}
+		if ((stack_a->data == position->data) && (target->data > position->data))
+			rr_ab(&stack_a, &stack_b, 'a');
 		p_ab(&stack_b, &stack_a, 'a');
-		if (target->sub_index < 0)
-			ss_ab(stack_a, stack_b, 'a');
+
 	}
+
+	// while (stack_b)
+	// {
+	// 	ft_indexing(stack_a);
+	// 	ft_indexing(stack_b);
+	// 	ft_instra(&stack_a, &stack_b);
+	// 	target = stack_b;
+	// 	len_a = ft_lstsize(stack_a);
+	// 	len_b = ft_lstsize(stack_b);
+	// 	j = -1;
+	// 	while (in(stack_b, ++j))
+	// 		target = target->instr_s > in(stack_b, j)->instr_s ? in(stack_b, j) : target;
+	// 	position = in(stack_a, (target->sub_index));
+	// 	if ((target->index <= (len_b / 2)) && (position->index <= (len_a / 2)))
+	// 		while (!(stack_b->data == target->data) && !(stack_a->data == position->data))
+	// 			rr_ab(&stack_a, &stack_b, 'X');
+	// 	else if ((target->index > (len_b / 2)) && (position->index > (len_a / 2)))
+	// 		while (!(stack_b->data == target->data) && !(stack_a->data == position->data))
+	// 			rrr_ab(&stack_a, &stack_b, 'X');
+	// 	if ((target->index <= (len_b / 2)))
+	// 		while (!(stack_b->data == target->data))
+	// 			rr_ab(&stack_a, &stack_b, 'b');
+	// 	else if ((target->index > (len_b / 2)))
+	// 		while (!(stack_b->data == target->data))
+	// 			rrr_ab(&stack_a, &stack_b, 'b');
+	// 	if ((position->index <= (len_a / 2)))
+	// 		while (!(stack_a->data == position->data))
+	// 			rr_ab(&stack_a, &stack_b, 'a');
+	// 	else if ((position->index > (len_a / 2)))
+	// 		while (!(stack_a->data == position->data))
+	// 			rrr_ab(&stack_a, &stack_b, 'a');
+	// 	p_ab(&stack_b, &stack_a, 'a');
+	// 	if (target->sub_index < 0)
+	// 		ss_ab(stack_a, stack_b, 'a');
+	// }
+	ft_indexing(stack_a);
 	target = stack_a;
 	i = -1;
 	while (in(stack_a, ++i))
@@ -253,6 +297,7 @@ int	main(int argc, char *argv[]) // Add function to check
 			target = in(stack_a, i);
 	target->h_lis = 1;
 	len_a = ft_lstsize(stack_a);
+	// printf("\n\n%d = %d = %d = %d\n\n", target->data, target->h_lis, target->index, len_a);
 	if (target->index <= (len_a / 2))
 		while (!(stack_a->h_lis == 1))
 			rr_ab(&stack_a, &stack_b, 'a');
@@ -261,4 +306,5 @@ int	main(int argc, char *argv[]) // Add function to check
 			rrr_ab(&stack_a, &stack_b, 'a');
 	// ft_print_lst(stack_a, 'A');
 	// ft_print_lst(stack_b, 'B');
+	// system("leaks push_swap");
 }
