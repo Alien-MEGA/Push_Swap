@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/15 14:01:10 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/15 17:41:01 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ void ft_print_lst(t_list *head, int option) // delete this
 
 static t_list	*in(t_list *head, int index)
 {
-	if (index < 0)
-		index = (-1) * index;
 	while (head)
 	{
 		if (head->index == index)
@@ -102,7 +100,7 @@ void	ft_instra(t_list **stack_a, t_list **stack_b)
 				target->instr_s += (max_n->index) + 1;
 			else if (max_n->index > (len_a / 2))
 				target->instr_s += (len_a - (max_n->index)) - 1;
-			target->sub_index = (-1) * (max_n->index);
+			target->sub_index = max_n->index;
 		}
 		else
 		{
