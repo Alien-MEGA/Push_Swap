@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/15 17:41:01 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/15 23:58:51 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void ft_print_lst(t_list *head, int option) // delete this
 {	
 	while (head != NULL)
 	{
-		printf("\nindex = %d  data = %d  lis = %d  sub_index = %d  h_lis = %d  instr_s = %d", head->index, head->data, head->lis, head->sub_index, head->h_lis, head->instr_s);
+		printf("\nindex = %d  data = %ld  lis = %d  sub_index = %d  h_lis = %d  instr_s = %d", head->index, head->data, head->lis, head->sub_index, head->h_lis, head->instr_s);
 		head = head->next;
 	}
 	if (option == 'A')
@@ -126,16 +126,15 @@ void	ft_instra(t_list **stack_a, t_list **stack_b)
 	}
 }
 
-int	main(int argc, char *argv[]) // Add function to check
+int	main(int argc, char **argv) // Add function to check
 {
+	char	*full_str;
+	char	**str;
 	t_list	*stack_a;
 	t_list	*stack_b;
-	t_list	*tmp_a;
-	t_list	*tmp_b;
 	int		lis;
 	int		sub_index;
 	int		max_lis;
-	int		*expected;
 	int		i;
 	int		j;
 	t_list	*target;
@@ -145,11 +144,45 @@ int	main(int argc, char *argv[]) // Add function to check
 
 	if (argc <= 1)
 		return (0);
-	i = 1;
-	while (i < argc)
-		ft_lstadd_back(&stack_a, (ft_lstnew(ft_atoi(argv[i++]))));
-	tmp_a = stack_a;
-	ft_indexing(tmp_a);
+	i = 0;
+	while (++i < argc)
+	{
+		full_str = ft_strjoin(full_str, argv[i]);
+		full_str = ft_strjoin(full_str, " ");
+	}
+	i = 0;
+	while (full_str[i] != '\0')
+	{
+		if (ft_isdigit(full_str[i]) == 0 && full_str[i] != 32)
+		{
+			write(2, "Error\n", 6);
+			exit(EXIT_FAILURE);
+		}
+		i++;
+	}
+	str = ft_split(full_str, ' ');
+	i = -1;
+	while (str[++i] != NULL)
+		ft_lstadd_back(&stack_a, (ft_lstnew(ft_atoi(str[i]))));
+	ft_indexing(stack_a);
+
+	i = 0;
+	len_a = 0;
+	while (in(stack_a, i))
+	{
+		j = i + 1;
+		while (in(stack_a, j))
+		{
+			if (in(stack_a, i)->data == in(stack_a, j)->data)
+			{
+				write(2, "Error\n", 6);
+				exit(EXIT_FAILURE);
+			}
+			j++;
+		}
+		i++;
+	}
+
 	i = 1;
 	while (in(stack_a, i))
 	{
@@ -182,13 +215,9 @@ int	main(int argc, char *argv[]) // Add function to check
 		if (max_lis == in(stack_a, i)->lis)
 			break;
 	}
-	expected = (int *)malloc(max_lis * sizeof(int));
-	if (!expected)
-		return (write(1, "Error\n", 6) ,0);
 	j = max_lis - 1;
 	while (j >= 0) 
 	{
-		expected[j] = in(stack_a, i)->data;
 		in(stack_a, i)->lis = -1;
 		i = in(stack_a, i)->sub_index;
 		j--;
@@ -206,10 +235,9 @@ int	main(int argc, char *argv[]) // Add function to check
 		else
 			p_ab(&stack_a, &stack_b, 'b');
 	}
-	tmp_a = stack_a;
-	ft_indexing(tmp_a);
-	tmp_b = stack_b;
-	ft_indexing(tmp_b);
+	ft_indexing(stack_a);
+	ft_indexing(stack_b);
+
 	while (stack_b)
 	{
 		ft_indexing(stack_a);
@@ -252,43 +280,8 @@ int	main(int argc, char *argv[]) // Add function to check
 			rr_ab(&stack_a, &stack_b, 'a');
 		p_ab(&stack_b, &stack_a, 'a');
 	}
-
-	// while (stack_b)
-	// {
-	// 	ft_indexing(stack_a);
-	// 	ft_indexing(stack_b);
-	// 	ft_instra(&stack_a, &stack_b);
-	// 	target = stack_b;
-	// 	len_a = ft_lstsize(stack_a);
-	// 	len_b = ft_lstsize(stack_b);
-	// 	j = -1;
-	// 	while (in(stack_b, ++j))
-	// 		target = target->instr_s > in(stack_b, j)->instr_s ? in(stack_b, j) : target;
-	// 	position = in(stack_a, (target->sub_index));
-	// 	if ((target->index <= (len_b / 2)) && (position->index <= (len_a / 2)))
-	// 		while (!(stack_b->data == target->data) && !(stack_a->data == position->data))
-	// 			rr_ab(&stack_a, &stack_b, 'X');
-	// 	else if ((target->index > (len_b / 2)) && (position->index > (len_a / 2)))
-	// 		while (!(stack_b->data == target->data) && !(stack_a->data == position->data))
-	// 			rrr_ab(&stack_a, &stack_b, 'X');
-	// 	if ((target->index <= (len_b / 2)))
-	// 		while (!(stack_b->data == target->data))
-	// 			rr_ab(&stack_a, &stack_b, 'b');
-	// 	else if ((target->index > (len_b / 2)))
-	// 		while (!(stack_b->data == target->data))
-	// 			rrr_ab(&stack_a, &stack_b, 'b');
-	// 	if ((position->index <= (len_a / 2)))
-	// 		while (!(stack_a->data == position->data))
-	// 			rr_ab(&stack_a, &stack_b, 'a');
-	// 	else if ((position->index > (len_a / 2)))
-	// 		while (!(stack_a->data == position->data))
-	// 			rrr_ab(&stack_a, &stack_b, 'a');
-	// 	p_ab(&stack_b, &stack_a, 'a');
-	// 	if (target->sub_index < 0)
-	// 		ss_ab(stack_a, stack_b, 'a');
-	// }
-
 	ft_indexing(stack_a);
+
 	target = stack_a;
 	i = -1;
 	while (in(stack_a, ++i))

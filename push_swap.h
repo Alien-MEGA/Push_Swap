@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:42 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/09 16:39:30 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/15 23:58:17 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 typedef struct s_list
 {
-	int				data;
+	long			data;
 	int				index;
 	int				lis;
 	int				sub_index;
@@ -38,11 +38,18 @@ void	ft_lstadd_front(t_list **lst, t_list *new);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstdelone(t_list **lst, int option);
 int		ft_lstsize(t_list *lst);
-int		ft_atoi(const char *str);
+long	ft_atoi(const char *str);
 
 void	p_ab(t_list **head_of_a, t_list **head_of_b, int option);
 void	ss_ab(t_list *head_of_a, t_list *head_of_b, int option);
 void	rr_ab(t_list **head_of_a, t_list **head_of_b, int option);
 void	rrr_ab(t_list **head_of_a, t_list **head_of_b, int option);
+
+char	**ft_split(char const *s, char c);
+char	*ft_strdup(const char *s1);
+size_t	ft_strlen(const char *str);
+char	*ft_substr(char const *str, unsigned int start, size_t len);
+char	*ft_strjoin(char const *s1, char const *s2);
+int		ft_isdigit(int c);
 
 #endif

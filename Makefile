@@ -6,15 +6,19 @@
 #    By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/22 16:23:50 by reben-ha          #+#    #+#              #
-#    Updated: 2023/01/14 21:44:27 by reben-ha         ###   ########.fr        #
+#    Updated: 2023/01/15 22:12:04 by reben-ha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap.a
 
-SRC = ft_linked_list.c ft_atoi.c ft_push_swap.c rule_psr.c
+SRC = ft_linked_list.c ft_atoi.c ft_push_swap.c rule_psr.c \
+		ft_split.c ft_strdup.c ft_strjoin.c ft_strlen.c ft_substr.c \
+		ft_isdigit.c
 
-OBJ = ft_linked_list.o ft_atoi.o ft_push_swap.o rule_psr.o
+OBJ = ft_linked_list.o ft_atoi.o ft_push_swap.o rule_psr.o \
+		ft_split.o ft_strdup.o ft_strjoin.o ft_strlen.o ft_substr.o \
+		ft_isdigit.o
 
 all : $(NAME)
 	@gcc push_swap.a -o push_swap
@@ -24,7 +28,7 @@ $(NAME) : $(OBJ)
 bonus : $(BOBJ)
 	@ar -rc $(NAME) $(BOBJ)
 %.o : %.c push_swap.h #-Wall -Wextra -Werror
-	@cc  -c $< -o $@
+	@cc -Wall -Wextra -Werror -c $< -o $@
 clean :
 	@rm -f $(OBJ)
 	@rm -f $(BOBJ)
