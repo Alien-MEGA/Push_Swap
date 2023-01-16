@@ -6,13 +6,13 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 19:32:38 by reben-ha          #+#    #+#             */
-/*   Updated: 2022/12/28 15:07:56 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/16 13:58:12 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_list	*ft_lstnew(int data)
+t_list	*ft_lstnew(long data)
 {
 	t_list	*newnode;
 

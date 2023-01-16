@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:42 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/15 23:58:17 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/16 13:58:32 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct s_list
 	struct s_list	*next;
 }					t_list;
 
-t_list	*ft_lstnew(int data);
+t_list	*ft_lstnew(long data);
 t_list	*ft_lstlast(t_list *lst);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 void	ft_lstadd_back(t_list **lst, t_list *new);

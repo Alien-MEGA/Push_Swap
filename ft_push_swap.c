@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:23:40 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/15 23:58:51 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/16 15:28:11 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,7 +143,7 @@ int	main(int argc, char **argv) // Add function to check
 	int		len_b;
 
 	if (argc <= 1)
-		return (0);
+		return (1);
 	i = 0;
 	while (++i < argc)
 	{
@@ -153,7 +153,8 @@ int	main(int argc, char **argv) // Add function to check
 	i = 0;
 	while (full_str[i] != '\0')
 	{
-		if (ft_isdigit(full_str[i]) == 0 && full_str[i] != 32)
+		if (ft_isdigit(full_str[i]) == 0 && full_str[i] != 32
+			 && !((full_str[i] == '+' || full_str[i] == '-') && ft_isdigit(full_str[i + 1]) == 1))
 		{
 			write(2, "Error\n", 6);
 			exit(EXIT_FAILURE);
@@ -179,6 +180,16 @@ int	main(int argc, char **argv) // Add function to check
 				exit(EXIT_FAILURE);
 			}
 			j++;
+		}
+		i++;
+	}
+	i = 0;
+	while (in(stack_a, i))
+	{
+		if (in(stack_a, i)->data > INT_MAX)
+		{
+			write(2, "Error\n", 6);
+			exit(EXIT_FAILURE);
 		}
 		i++;
 	}

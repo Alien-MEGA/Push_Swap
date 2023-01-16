@@ -6,7 +6,7 @@
 /*   By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 18:42:01 by reben-ha          #+#    #+#             */
-/*   Updated: 2023/01/15 23:57:37 by reben-ha         ###   ########.fr       */
+/*   Updated: 2023/01/16 13:56:09 by reben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static long	result(const char *str, int i, int sg)
 {
-	size_t	nb;
+	long	nb;
 
 	nb = 0;
 	while (ft_isdigit(str[i]))
