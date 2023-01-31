@@ -6,47 +6,70 @@
 #    By: reben-ha <reben-ha@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/22 16:23:50 by reben-ha          #+#    #+#              #
-#    Updated: 2023/01/15 22:12:04 by reben-ha         ###   ########.fr        #
+#    Updated: 2023/01/24 21:21:11 by reben-ha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = push_swap.a
+NAME = push_swap
 
-SRC = ft_linked_list.c ft_atoi.c ft_push_swap.c rule_psr.c \
-		ft_split.c ft_strdup.c ft_strjoin.c ft_strlen.c ft_substr.c \
-		ft_isdigit.c
+BNAME = checker
 
-OBJ = ft_linked_list.o ft_atoi.o ft_push_swap.o rule_psr.o \
-		ft_split.o ft_strdup.o ft_strjoin.o ft_strlen.o ft_substr.o \
-		ft_isdigit.o
+SRC = push_swap_mand.c \
+		rule_psr_mand.c \
+		short_rule_psr_mand.c
+
+OBJ = push_swap_mand.o \
+		rule_psr_mand.o \
+		short_rule_psr_mand.o
+
+BSRC = checker_bonus.c rule_psr_bonus.c
+
+BOBJ = checker_bonus.o rule_psr_bonus.o
+
+LIB = ./libft/libft.a
+
+MANDUTILS = ./mandatory_utils/part_one_mand.c ./mandatory_utils/part_two_mand.c \
+			./mandatory_utils/part_three_mand.c ./mandatory_utils/part_four_mand.c \
+			./mandatory_utils/part_five_mand.c ./mandatory_utils/part_six_mand.c
+
+MANDUTILSOBG = ./mandatory_utils/part_one_mand.o ./mandatory_utils/part_two_mand.o \
+			./mandatory_utils/part_three_mand.o ./mandatory_utils/part_four_mand.o \
+			./mandatory_utils/part_five_mand.o ./mandatory_utils/part_six_mand.o
+
+BONUTILS = ./bonus_utils/part_one_bonus.c ./bonus_utils/part_two_bonus.c
+
+BONUTILSOBG = ./bonus_utils/part_one_bonus.o ./bonus_utils/part_two_bonus.o
 
 all : $(NAME)
-	@gcc push_swap.a -o push_swap
 
-$(NAME) : $(OBJ)
-	@ar -rc $(NAME) $(OBJ)
-bonus : $(BOBJ)
-	@ar -rc $(NAME) $(BOBJ)
-%.o : %.c push_swap.h #-Wall -Wextra -Werror
-	@cc -Wall -Wextra -Werror -c $< -o $@
+$(NAME) : $(OBJ) $(LIB) $(MANDUTILSOBG)
+	cc $(OBJ) $(LIB) $(MANDUTILSOBG) -o $(NAME)
+
+%_mand.o : %_mand.c push_swap.h
+	cc -Wall -Wextra -Werror -c $< -o $@
+
+./mandatory_utils/%_mand.o : ./mandatory_utils/%_mand.c push_swap.h
+	cc -Wall -Wextra -Werror -c $< -o $@
+
+$(LIB) : 
+	make -C ./libft
+
+bonus : $(BOBJ) $(LIB) $(BONUTILSOBG)
+	cc $(BOBJ) $(LIB) $(BONUTILSOBG) -o $(BNAME)
+
+%_bonus.o : %_bonus.c checker_bonus.h
+	cc -Wall -Wextra -Werror -c $< -o $@
+
+./bonus_utils/%_bonus.o : ./bonus_utils/%_bonus.c checker_bonus.h
+	cc -Wall -Wextra -Werror -c $< -o $@
+
 clean :
-	@rm -f $(OBJ)
-	@rm -f $(BOBJ)
+	rm -f $(OBJ) $(MANDUTILSOBG)
+	rm -f $(BOBJ) $(BONUTILSOBG)
+	make fclean -C ./libft
 fclean : clean
-	@rm -f $(NAME)
+	rm -f $(NAME)
+	rm -f $(BNAME)
 re : fclean all
 
-app : re
-	@make clean
-	@gcc push_swap.a -o push_swap
-	@rm -f push_swap.a
-run : app
-	@./push_swap 3 9 6 5 7 4 1 8 2
-test100 : app
-	@./push_swap 194 197 16 140 40 159 67 174 54 154 89 173 62 31 13 131 145 41 134 53 144 179 97 171 108 75 5 50 60 101 148 165 70 169 132 77 141 195 128 78 192 183 147 56 127 166 191 42 200 51 74 18 130 160 139 52 32 87 20 113 11 27 190 7 156 91 180 21 155 149 143 138 181 33 29 187 117 109 80 88 158 106 126 15 136 170 36 90 34 6 115 129 164 185 55 98 135 125 3 76 | ./checker_Mac 194 197 16 140 40 159 67 174 54 154 89 173 62 31 13 131 145 41 134 53 144 179 97 171 108 75 5 50 60 101 148 165 70 169 132 77 141 195 128 78 192 183 147 56 127 166 191 42 200 51 74 18 130 160 139 52 32 87 20 113 11 27 190 7 156 91 180 21 155 149 143 138 181 33 29 187 117 109 80 88 158 106 126 15 136 170 36 90 34 6 115 129 164 185 55 98 135 125 3 76
-	@./push_swap 194 197 16 140 40 159 67 174 54 154 89 173 62 31 13 131 145 41 134 53 144 179 97 171 108 75 5 50 60 101 148 165 70 169 132 77 141 195 128 78 192 183 147 56 127 166 191 42 200 51 74 18 130 160 139 52 32 87 20 113 11 27 190 7 156 91 180 21 155 149 143 138 181 33 29 187 117 109 80 88 158 106 126 15 136 170 36 90 34 6 115 129 164 185 55 98 135 125 3 76 | wc -l
-gitpush : 
-	git add .
-	git commit -m "Push-Swap"
-	git push
 .PHONY = all bonus clean fclean re
